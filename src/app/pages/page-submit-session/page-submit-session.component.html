@@ -1,0 +1,27 @@
+<body>
+  <div class="wrapper">
+  <form class= FormSubmit [formGroup]="uploadForm" (ngSubmit)="onSubmit()">
+    <div class="mb-3">
+      <label for="title" class="form-label">Titre</label>
+      <input type="text" class="form-control" id="title" formControlName="title" required>
+    </div>
+    <div class="mb-3">
+      <label for="description" class="form-label">Description</label>
+      <textarea class="form-control" id="description" formControlName="description" required></textarea>
+    </div>
+    <div class="mb-3">
+      <label for="duration" class="form-label">Durée</label>
+      <input type="text" class="form-control" id="duration" formControlName="duration" required>
+    </div>
+    <div class="mb-3">
+      <label for="category_id" class="form-label">Catégorie ID</label>
+      <input type="text" class="form-control" id="category_id" formControlName="category_id" required>
+    </div>
+    <div class="mb-3">
+      <label for="sound_file" class="form-label">Fichier son (MP3)</label>
+      <input type="file" class="form-control" id="sound_file" (change)="onFileChange($event)" required>
+    </div>
+    <button type="submit" class="btn btn-primary">Soumettre la Session</button>
+  </form>
+  </div>
+</body>

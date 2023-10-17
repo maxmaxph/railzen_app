@@ -54,7 +54,7 @@ a.dropdown-item:hover {
   top: 0;
   left: 0;
   width: 100%; /* Largeur à 100% de la page */
-  z-index: 1; /* Indice de superposition */
+  z-index: 4; /* Indice de superposition */
   padding-bottom: 120px; /* Marge inférieure pour éviter le chevauchement */
 
   /* Dégradé de fond */

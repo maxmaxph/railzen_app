@@ -9,6 +9,7 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { LoaderComponent } from './components/loader/loader.component';
 import { PageConnectComponent } from './pages/page-connect/page-connect.component';
+import { PageSubscribeComponent } from './pages/page-subscribe/page-subscribe.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,9 @@ import { PageConnectComponent } from './pages/page-connect/page-connect.componen
     NavbarComponent,
     FooterComponent,
     LoaderComponent,
-    PageConnectComponent
+    PageConnectComponent,
+    PageSubscribeComponent,
+    
   ],
   imports: [
     BrowserModule,

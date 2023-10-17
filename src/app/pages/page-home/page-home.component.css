@@ -101,7 +101,7 @@ body {
 .content {
   padding-top: 30%;
   text-align: center;
-  z-index: 1; /* Assure que le contenu soit au-dessus des boîtes animées */
+  z-index: 3; /* Assure que le contenu soit au-dessus des boîtes animées */
   
 }
 

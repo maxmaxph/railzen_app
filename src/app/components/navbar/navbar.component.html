@@ -1,7 +1,7 @@
 <div id="mainNavigation">
       <nav role="navigation">
         <div class="py-3 text-center border-bottom">
-          <img class="logo" src="./assets/logo-raizen.svg" alt="logo RailZen" class="invert" [routerLink]="['home']">
+          <img class="logo" src="./assets/logo-raizen.svg" alt="logo RailZen" class="invert" [routerLink]="['/home']">
         </div>
       </nav>
       <div class="navbar-expand-md">
@@ -13,16 +13,16 @@
         <div class="text-center mt-3 collapse navbar-collapse" id="navbarNavDropdown">
           <ul class="navbar-nav mx-auto ">
             <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="#">Home</a>
+              <a class="nav-link active" aria-current="page" [routerLink]="['/home']">Home</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Book Hotel</a>
+              <a class="nav-link" href="#">Seances</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Destinations</a>
+              <a class="nav-link" href="#">Profil</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Policy</a>
+              <a class="nav-link" href="#">Infos</a>
             </li>
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">

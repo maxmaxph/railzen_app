@@ -8,6 +8,7 @@ import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.com
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { LoaderComponent } from './components/loader/loader.component';
+import { PageConnectComponent } from './pages/page-connect/page-connect.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { LoaderComponent } from './components/loader/loader.component';
     PageNotFoundComponent,
     NavbarComponent,
     FooterComponent,
-    LoaderComponent
+    LoaderComponent,
+    PageConnectComponent
   ],
   imports: [
     BrowserModule,

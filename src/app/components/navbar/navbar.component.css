@@ -1,0 +1,92 @@
+/* Styles pour les liens du menu de navigation principal */
+/* Styles for main navigation links */
+#mainNavigation a {
+  font-family: JuliusSansOne-Regular, "Julius Sans One"; /* Police de caractères */
+  font-size: 14px; /* Taille de police */
+  text-transform: uppercase; /* Mettre en majuscules */
+  letter-spacing: 1px; /* Espacement entre les caractères */
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.4); /* Ombre du texte */
+  font-weight: 600;
+}
+
+/* Styles pour le menu déroulant */
+/* Styles for the dropdown menu */
+
+.dropdown-menu {
+  background: linear-gradient(to bottom, rgba(41, 49, 91, 0.6), rgba(60, 108, 155, 0.6)); /* Dégradé de fond avec opacité */
+}
+
+
+/* Styles pour les liens du menu déroulant */
+/* Styles for dropdown links */
+a.dropdown-toggle {
+  color: #dfdfdf !important; /* Couleur du texte */
+}
+
+/* Styles au survol des liens du menu déroulant */
+/* Styles for dropdown links on hover */
+a.dropdown-item:hover {
+  color: #03727d !important; /* Couleur du texte au survol */
+}
+
+/* Styles pour les liens du menu de navigation */
+/* Styles for navigation links */
+.nav-item a {
+  color: #dfdfdf; /* Couleur du texte */
+}
+
+/* Styles au survol des liens du menu de navigation */
+/* Styles for navigation links on hover */
+.nav-item a:hover {
+  color: #25c2da; /* Couleur du texte au survol */
+}
+
+/* Styles pour les éléments du menu de navigation */
+/* Styles for navigation items */
+.nav-item {
+  min-width: 12vw; /* Largeur minimale des éléments de menu */
+}
+
+/* Styles pour la barre de navigation principale */
+/* Styles for the main navigation bar */
+#mainNavigation {
+  position: fixed; /* Position fixée en haut de la page */
+  top: 0;
+  left: 0;
+  width: 100%; /* Largeur à 100% de la page */
+  z-index: 123; /* Indice de superposition */
+  padding-bottom: 120px; /* Marge inférieure pour éviter le chevauchement */
+
+  /* Dégradé de fond */
+  /* Background gradient */
+  background: -moz-linear-gradient(
+    top,
+    rgba(0, 0, 0, 0.65) 0%,
+    rgba(0, 0, 0, 0) 100%
+  ); /* FF3.6-15 */
+  background: -webkit-linear-gradient(
+    top,
+    rgba(0, 0, 0, 0.65) 0%,
+    rgba(0, 0, 0, 0) 100%
+  ); /* Chrome10-25, Safari5.1-6 */
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.65) 0%,
+    rgba(0, 0, 0, 0) 100%
+  ); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#a6000000', endColorstr='#00000000', GradientType=0 ); /* IE6-9 */
+}
+
+/* Styles pour le menu de navigation en cours de réduction */
+/* Styles for collapsing navigation menu */
+#navbarNavDropdown.collapsing .navbar-nav,
+#navbarNavDropdown.show .navbar-nav {
+  background: linear-gradient(to bottom, #29315b, #514a9d);
+  padding: 12px; /* Espacement intérieur */
+}
+
+/* Styles pour le logo */
+/* Styles for the logo */
+.logo {
+  width: 200px; /* Largeur du logo */
+}

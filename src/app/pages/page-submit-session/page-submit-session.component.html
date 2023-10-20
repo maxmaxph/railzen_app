@@ -19,7 +19,7 @@
       </div>
       <div class="mb-3">
         <label for="sound_file" class="form-label">Fichier son (MP3)</label>
-        <input type="file" class="form-control" id="sound_file" (change)="onFileChange($event)" required>
+        <input type="file" class="form-control" id="sound_file" formControlName="media_id"  accept="audio/*" (change)="onAudioSelected($event)" required>
       </div>
       <button type="submit" class="btn btn-primary">Soumettre la Session</button>
     </form>

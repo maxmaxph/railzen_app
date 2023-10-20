@@ -4,13 +4,15 @@ import { PageHomeComponent } from './pages/page-home/page-home.component';
 import { PageConnectComponent } from './pages/page-connect/page-connect.component';
 import { PageSubscribeComponent } from './pages/page-subscribe/page-subscribe.component';
 import { PageSubmitSessionComponent } from './pages/page-submit-session/page-submit-session.component';
+import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: 'home', component: PageHomeComponent },
   { path: 'connect', component: PageConnectComponent },
   { path: 'subscribe', component: PageSubscribeComponent },
-  { path: 'submit', component: PageSubmitSessionComponent},
+  { path: 'submit', component: PageSubmitSessionComponent },
+  { path: '**', component: PageNotFoundComponent },
 ];
 
 @NgModule({

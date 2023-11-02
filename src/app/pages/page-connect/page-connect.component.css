@@ -22,19 +22,19 @@ body {
 
 
 
-.content h1 {
+h1 {
   font-size: 26px;
   margin-bottom: 10px;
 }
 
-.content h2 {
+h2 {
   font-size: 20px;
   margin-bottom: 10px;
   padding-left: 15%;
   padding-right: 15%;
 }
 
-.content p {
+ p {
   font-size: 16px;
   margin-bottom: 20px;
   padding-left: 15%;

@@ -12,7 +12,7 @@ const routes: Routes = [
   { path: 'connect', component: PageConnectComponent },
   { path: 'subscribe', component: PageSubscribeComponent },
   { path: 'submit', component: PageSubmitSessionComponent },
-  { path: '**', component: PageNotFoundComponent },
+    { path: '**', component: PageNotFoundComponent },
 ];
 
 @NgModule({

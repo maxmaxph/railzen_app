@@ -12,6 +12,8 @@ import { PageConnectComponent } from './pages/page-connect/page-connect.componen
 import { PageSubscribeComponent } from './pages/page-subscribe/page-subscribe.component';
 import { PageSubmitSessionComponent } from './pages/page-submit-session/page-submit-session.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { SessionsListComponent } from './components/sessions-list/sessions-list.component';
+import { SessionCardComponent } from './components/session-card/session-card.component';
 
 @NgModule({
   declarations: [
@@ -24,6 +26,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     PageConnectComponent,
     PageSubscribeComponent,
     PageSubmitSessionComponent,
+    SessionsListComponent,
+    SessionCardComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule, ReactiveFormsModule, HttpClientModule],
   providers: [],

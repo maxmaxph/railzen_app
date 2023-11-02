@@ -20,9 +20,7 @@ body {
   align-items: center;
 }
 
-.formSubscribe{
-    z-index: 999;
-}
+
 .modal-title{
   color: #514A9D;
 }
@@ -31,12 +29,12 @@ body {
   color: #514A9D;
 }
 
-.content h1 {
+ h1 {
   font-size: 26px;
   margin-bottom: 10px;
 }
 
-.content h2 {
+ h2 {
   font-size: 20px;
   margin-bottom: 10px;
   padding-left: 15%;

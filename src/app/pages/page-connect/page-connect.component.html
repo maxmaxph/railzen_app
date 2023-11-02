@@ -1,5 +1,7 @@
 <body>
   <div class="wrapper">
+    <h1>CONNEXION</h1>
+        
     <form [formGroup]="loginForm" (submit)="onSubmit()">
       <div class="mb-3">
         <label for="email" class="form-label">Adresse mail</label>
@@ -22,13 +24,7 @@
         <input type="password" class="form-control" id="password" formControlName="password"
                 required/>
       </div>
-      <div class="mb-3 form-check">
-        <input type="checkbox" class="form-check-input" id="exampleCheck1" />
-        <label class="form-check-label" for="exampleCheck1"
-          >se rappeler de moi</label
-        >
-      </div>
-      <button type="submit" class="btn btn-primary" [disabled]="!loginForm.valid">CONNEXION</button>
+        <button type="submit" class="btn btn-primary" [disabled]="!loginForm.valid">CONNEXION</button>
     </form>
     <!-- Modal -->
     <div

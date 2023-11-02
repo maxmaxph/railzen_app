@@ -229,3 +229,15 @@ border: none;
     padding-top: 400px; /* Aucun espacement en haut du contenu */
   }
 }
+
+.opacity-transition {
+  transition: opacity 1s ease-in-out;
+}
+
+.visible {
+  opacity: 1;
+}
+
+.hidden {
+  opacity: 0;
+}

@@ -65,9 +65,13 @@ border: none;
   box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.5);
 }
 
+.modal-title{
+  color: #514A9D;
+}
 
-
-
+.modal-body{
+  color: #514A9D;
+}
 
 
 @media (max-width: 768px) {

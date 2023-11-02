@@ -181,7 +181,7 @@ border: none;
   margin-top: 20px;
   animation: float 8s linear infinite; /* Vous pouvez ajuster la durée de l'animation ici */
   filter: drop-shadow(0 0 0.2rem rgb(0, 0, 0));
-  transition: opacity 0.5s ease; /* Ajoutez cette ligne pour la transition de l'opacité */
+  transition: opacity 3s ease; /* Ajoutez cette ligne pour la transition de l'opacité */
 }
 
 /* Animation du diaporama */
@@ -208,6 +208,14 @@ border: none;
   }
 }
 
+/* Gestion de l'opacité pour les images SVG */
+.visible {
+  opacity: 1;
+}
+
+.hidden {
+  opacity: 0;
+}
 @media (max-width: 768px) {
   /* Styles pour les écrans de largeur maximale de 768px (Mobile) */
   .svg-container {

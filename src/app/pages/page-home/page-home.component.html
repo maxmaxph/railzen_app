@@ -23,10 +23,10 @@
       </div>
     </div>
     <div class="svg-container">
-      <div id="currentImage" class="svg-figure opacity-transition">
+      <div id="currentImage" class="svg-figure opacity-transition" [ngClass]="{ 'visible': isCurrentImageVisible, 'hidden': !isCurrentImageVisible }">
         <object [data]="currentImage" type="image/svg+xml" width="200" height="200%"></object>
       </div>
-      <div id="nextImage" class="svg-figure opacity-transition">
+      <div id="nextImage" class="svg-figure opacity-transition" [ngClass]="{ 'visible': !isCurrentImageVisible, 'hidden': isCurrentImageVisible }">
         <!-- Image suivante sera affichée ici -->
       </div>
     </div>

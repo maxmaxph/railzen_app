@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { User } from 'src/app/interfaces/user';
 import { UserService } from 'src/app/services/user.service';
 import { Token } from 'src/app/interfaces/token';
@@ -17,9 +17,9 @@ export class PageConnectComponent {
     private formBuilder: FormBuilder, private userService: UserService
   ) {
     this.loginForm = this.formBuilder.group({
-      email: [''],
-      password: ['']
-    })
+      email: ['', Validators.required],
+      password: ['', Validators.required],
+    });
   }
 
   onSubmit() {

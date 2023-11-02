@@ -1,43 +1,133 @@
 <body>
   <div class="wrapper">
-    <form class="FormSubscribe">
+    <form
+      class="formSubscribe"
+      [formGroup]="subscribeForm"
+      (submit)="onSubmit()"
+    >
       <div class="mb-1">
-        <label for="InputLastName" class="form-label">Nom</label>
+        <label for="inputLastName" class="form-label">Nom</label>
         <input
           type="text"
           class="form-control"
-          id="InputLastName"
-          aria-describedby="emailHelp"
+          id="inputLastName"
+          formControlName="inputLastName"
+          required
         />
       </div>
       <div class="mb-1">
-        <label for="InputFirstName" class="form-label">Prénom</label>
+        <label for="inputFirstName" class="form-label">Prénom</label>
         <input
           type="text"
           class="form-control"
-          id="InputFirstName"
-          aria-describedby="emailHelp"
+          id="inputFirstName"
+          formControlName="inputFirstName"
+          required
         />
       </div>
       <div class="mb-1">
-        <label for="InputEmail" class="form-label">Adresse mail</label>
+        <label for="inputEmail" class="form-label">Adresse mail</label>
         <input
           type="email"
           class="form-control"
-          id="InputEmail"
-          aria-describedby="emailHelp"
+          id="inputEmail"
+          formControlName="inputEmail"
+          required
         />
       </div>
       <div class="mb-1">
-        <label for="InputPassword" class="form-label">Mot de passe</label>
-        <input type="password" class="form-control" id="InputPassword" />
+        <label for="inputPassword" class="form-label">Mot de passe</label>
+        <input
+          type="password"
+          class="form-control"
+          id="inputPassword"
+          formControlName="inputPassword"
+        />
       </div>
       <div class="mb-1">
-        <label for="InputConfirmPassword" class="form-label">Confirmez le mot de passe</label>
-        <input type="password" class="form-control" id="InputConfirmPassword" />
+        <label for="inputConfirmPassword" class="form-label"
+          >Confirmez le mot de passe</label
+        >
+        <input
+          type="password"
+          class="form-control"
+          id="inputConfirmPassword"
+          formControlName="inputConfirmPassword"
+        />
       </div>
-      
+
       <button type="submit" class="btn btn-primary">CONNEXION</button>
     </form>
+    <!-- Modal -->
+    <div
+      class="modal fade"
+      id="subscribeModal"
+      tabindex="-1"
+      aria-labelledby="subscribeModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="subscribeModalLabel">
+              Inscription réussie
+            </h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">Vous êtes desormais prets à méditer!</div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+              [routerLink]="['/home']"
+            >
+              Fermer
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Error Modal -->
+    <div
+      class="modal fade"
+      id="errorModal"
+      tabindex="-1"
+      aria-labelledby="errorModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="errorModalLabel">
+              Erreur de connexion
+            </h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            Une erreur est survenue lors de l'inscription. Veuillez réessayer.
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+            >
+              Fermer
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </body>

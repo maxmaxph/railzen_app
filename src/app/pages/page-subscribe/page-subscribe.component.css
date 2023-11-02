@@ -20,8 +20,15 @@ body {
   align-items: center;
 }
 
-.FormSubscribe{
-    z-index: 4;
+.formSubscribe{
+    z-index: 999;
+}
+.modal-title{
+  color: #514A9D;
+}
+
+.modal-body{
+  color: #514A9D;
 }
 
 .content h1 {

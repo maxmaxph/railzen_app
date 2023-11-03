@@ -1,0 +1,12 @@
+<article class="postcard" [ngClass]="isAlternate ? 'light red' : 'light blue'">
+  <a class="postcard__img_link" [ngClass]="{'reverse': isAlternate}" href="#">
+    <img class="postcard__img" [src]="category.imageUrl" alt="{{ category.name }}" />
+  </a>
+  <div class="postcard__text t-dark">
+    <h1 class="postcard__title" [ngClass]="isAlternate ? 'red' : 'blue'"><a href="#">{{ category.name }}</a></h1>
+    <div class="postcard__bar"></div>
+    <div class="postcard__preview-txt">{{ category.description }}</div>
+
+  </div>
+</article>
+

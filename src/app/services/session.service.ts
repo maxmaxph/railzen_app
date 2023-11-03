@@ -10,21 +10,24 @@ export class SessionService {
   private bddUrl = 'http://localhost:3000/api';
   constructor(private http: HttpClient) {}
 
-  // private getHeaders(): HttpHeaders {
-  //   const token = localStorage.getItem('access_token');
-  //   let headers = new HttpHeaders();
-  //   if (token) {
-  //     headers = headers.set('Authorization', 'Bearer ' + token);
-  //   }
-  //   return headers;
-  // }
+  private getHttpOptions() {
+    const token = localStorage.getItem('token');
+    return {
+      headers: new HttpHeaders({
+        Authorization: `Bearer ${token}`,
+      }),
+    };
+  }
 
   getAllSession(): Observable<Session[]> {
-    return this.http.get<Session[]>(`${this.bddUrl}/sessions`, );
+    return this.http.get<Session[]>(
+      `${this.bddUrl}/sessions`,
+      this.getHttpOptions()
+    );
   }
 
   getSessionById(id: number): Observable<Session> {
-    return this.http.get<Session>(`${this.bddUrl}/sessions/${id}`, );
+    return this.http.get<Session>(`${this.bddUrl}/sessions/${id}`,this.getHttpOptions());
   }
 
   getMediaUrl(mediaId: number): string {
@@ -33,24 +36,33 @@ export class SessionService {
 
   addSession(session: any): Observable<any> {
     console.log('MEDITATION ENVOYER', session);
-    const token = localStorage.getItem('token')
-    return this.http.post<Session>(`${this.bddUrl}/sessions`, session, {
-      headers: { Authorization: `Bearer ${token}` },
-    });
+    const token = localStorage.getItem('token');
+    return this.http.post<Session>(
+      `${this.bddUrl}/sessions`,
+      session,
+      this.getHttpOptions()
+    );
   }
 
   getSessionByUserId(userId: number): Observable<Session[]> {
-    return this.http.get<Session[]>(`${this.bddUrl}/sessions/user/${userId}`,);
+    return this.http.get<Session[]>(
+      `${this.bddUrl}/sessions/user/${userId}`,
+      this.getHttpOptions()
+    );
   }
 
-  updateMeditation(id: number, meditation: Session): Observable<Session> {
+  updateSession(id: number, meditation: Session): Observable<Session> {
     return this.http.patch<Session>(
       `${this.bddUrl}/sessions/${id}`,
-      meditation
+      meditation,
+      this.getHttpOptions()
     );
   }
 
   deleteSession(id: number): Observable<any> {
-    return this.http.delete(`${this.bddUrl}/sessions/${id}`, );
+    return this.http.delete(
+      `${this.bddUrl}/sessions/${id}`,
+      this.getHttpOptions()
+    );
   }
 }

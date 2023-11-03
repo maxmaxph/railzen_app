@@ -14,6 +14,8 @@ import { PageSubmitSessionComponent } from './pages/page-submit-session/page-sub
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SessionsListComponent } from './components/sessions-list/sessions-list.component';
 import { SessionCardComponent } from './components/session-card/session-card.component';
+import { CategoryCardComponent } from './components/category-card/category-card.component';
+import { CategoryListComponent } from './components/category-list/category-list.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +30,8 @@ import { SessionCardComponent } from './components/session-card/session-card.com
     PageSubmitSessionComponent,
     SessionsListComponent,
     SessionCardComponent,
+    CategoryCardComponent,
+    CategoryListComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule, ReactiveFormsModule, HttpClientModule],
   providers: [],

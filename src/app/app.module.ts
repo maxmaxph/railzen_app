@@ -16,6 +16,7 @@ import { SessionsListComponent } from './components/sessions-list/sessions-list.
 import { SessionCardComponent } from './components/session-card/session-card.component';
 import { CategoryCardComponent } from './components/category-card/category-card.component';
 import { CategoryListComponent } from './components/category-list/category-list.component';
+import { SessionListComponent } from './components/session-list/session-list.component';
 
 @NgModule({
   declarations: [
@@ -32,6 +33,7 @@ import { CategoryListComponent } from './components/category-list/category-list.
     SessionCardComponent,
     CategoryCardComponent,
     CategoryListComponent,
+    SessionListComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule, ReactiveFormsModule, HttpClientModule],
   providers: [],

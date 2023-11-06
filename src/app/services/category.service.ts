@@ -34,12 +34,12 @@ export class CategoryService {
 
   private getImageForCategory(category: Category): string {
     const images: { [key: number]: string } = {
-      1: 'assets/img/img_category/atteinte.jpg',
-      2: 'assets/img/img_category/pression.jpg',
-      3: 'assets/img/img_category/sommeil.jpg',
-      4: 'assets/img/img_category/urgence.jpg',
-      5: 'assets/img/img_category/changement.jpg',
-      6: 'assets/img/img_category/detente.jpg',
+      2: 'assets/img/img_category/atteinte.jpg',
+      3: 'assets/img/img_category/pression.jpg',
+      4: 'assets/img/img_category/sommeil.jpg',
+      5: 'assets/img/img_category/urgence.jpg',
+      6: 'assets/img/img_category/changement.jpg',
+      7: 'assets/img/img_category/detente.jpg',
     };
 
     return images[category.category_id] || 'assets/img/img_category/detente.jpg';

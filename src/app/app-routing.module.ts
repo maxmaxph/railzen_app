@@ -16,6 +16,7 @@ const routes: Routes = [
   { path: 'subscribe', component: PageSubscribeComponent },
   { path: 'submit', component: PageSubmitSessionComponent },
   { path: 'card', component: CategoryCardComponent },
+  { path: 'session-card', component: SessionCardComponent },
   { path: 'category', component: CategoryListComponent },
   { path: '**', component: PageNotFoundComponent },
 ];

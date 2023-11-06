@@ -27,7 +27,10 @@ export class SessionService {
   }
 
   getSessionById(id: number): Observable<Session> {
-    return this.http.get<Session>(`${this.bddUrl}/sessions/${id}`,this.getHttpOptions());
+    return this.http.get<Session>(
+      `${this.bddUrl}/sessions/${id}`,
+      this.getHttpOptions()
+    );
   }
 
   getMediaUrl(mediaId: number): string {
@@ -47,6 +50,14 @@ export class SessionService {
   getSessionByUserId(userId: number): Observable<Session[]> {
     return this.http.get<Session[]>(
       `${this.bddUrl}/sessions/user/${userId}`,
+      this.getHttpOptions()
+    );
+  }
+
+  // Méthode pour récupérer les sessions par ID de catégorie
+  getSessionsByCategory(categoryId: number): Observable<Session[]> {
+    return this.http.get<Session[]>(
+      `${this.bddUrl}/sessions/category/${categoryId}`,
       this.getHttpOptions()
     );
   }

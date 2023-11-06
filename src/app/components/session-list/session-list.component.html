@@ -1,1 +1,10 @@
-<p>session-list works!</p>
+<div class="container">
+<div *ngIf="sessions.length > 0; else noSessions">
+  <div *ngFor="let session of sessions" class="mb-6 mt-6">
+    <app-session-card [session]="session"></app-session-card>
+  </div>
+</div>
+</div>
+<ng-template #noSessions>
+  <p>Aucune session disponible pour cette catégorie.</p>
+</ng-template>

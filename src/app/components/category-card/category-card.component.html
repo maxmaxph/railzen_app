@@ -1,5 +1,5 @@
-<article class="postcard" [ngClass]="isAlternate ? 'light red' : 'light blue'">
-  <a class="postcard__img_link" [ngClass]="{'reverse': isAlternate}" href="#">
+<article (click)="onCategorySelected(category.category_id)" class="postcard" [ngClass]="isAlternate ? 'light red' : 'light blue'">
+  <a class="postcard__img_link" [ngClass]="{'reverse': isAlternate}">
     <img class="postcard__img" [src]="category.imageUrl" alt="{{ category.name }}" />
   </a>
   <div class="postcard__text t-dark">

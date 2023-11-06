@@ -1,0 +1,12 @@
+ .container{
+    padding: 4rem 0; /* Ajoutez du padding en haut et en bas si nécessaire */}
+.container::before {
+  content: "";
+  position: fixed; /* Fixe le pseudo-élément par rapport à la fenêtre du navigateur */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to top, #24C6DC, #514A9D);
+  z-index: -1; /* Place le fond derrière le contenu */
+}

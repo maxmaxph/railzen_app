@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpClientModule } from '@angular/common/http'; 
+import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { PageHomeComponent } from './pages/page-home/page-home.component';
@@ -12,11 +12,12 @@ import { PageConnectComponent } from './pages/page-connect/page-connect.componen
 import { PageSubscribeComponent } from './pages/page-subscribe/page-subscribe.component';
 import { PageSubmitSessionComponent } from './pages/page-submit-session/page-submit-session.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { SessionsListComponent } from './components/sessions-list/sessions-list.component';
+
 import { SessionCardComponent } from './components/session-card/session-card.component';
 import { CategoryCardComponent } from './components/category-card/category-card.component';
 import { CategoryListComponent } from './components/category-list/category-list.component';
 import { SessionListComponent } from './components/session-list/session-list.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -29,13 +30,19 @@ import { SessionListComponent } from './components/session-list/session-list.com
     PageConnectComponent,
     PageSubscribeComponent,
     PageSubmitSessionComponent,
-    SessionsListComponent,
     SessionCardComponent,
     CategoryCardComponent,
     CategoryListComponent,
     SessionListComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, FormsModule, ReactiveFormsModule, HttpClientModule],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    FormsModule,
+    ReactiveFormsModule,
+    HttpClientModule,
+    BrowserAnimationsModule,
+  ],
   providers: [],
   bootstrap: [AppComponent],
 })

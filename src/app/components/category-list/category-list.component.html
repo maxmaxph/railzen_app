@@ -1,6 +1,6 @@
+<!-- category-list.component.html -->
 <div class="container py-2">
   <div class="h1 text-center " id="pageHeaderTitle">Catégories de séance</div>
 
-  <!-- Utilisez *ngFor avec un index pour alterner les styles -->
-  <app-category-card *ngFor="let category of categories; let i = index" [category]="category" [isAlternate]="i % 2 === 1"></app-category-card>
+  <app-category-card *ngFor="let category of categories; let i = index" [category]="category" [isAlternate]="i % 2 === 1" (click)="onCategorySelected(category.category_id)"></app-category-card>
 </div>

@@ -1,0 +1,39 @@
+/* Style pour le conteneur de l'image */
+.image-container {
+  overflow: hidden; /* Empêche l'image agrandie de déborder */
+  border-radius: 8px; /* Assurez-vous que cela correspond au style de votre image */
+}
+
+/* Style pour l'image avec l'effet de zoom */
+.image-zoom {
+  transition: transform 0.5s ease; /* Animation douce pour le zoom */
+  width: 100%; /* Assurez-vous que l'image remplit le conteneur */
+  height: auto; /* Gardez le ratio de l'image */
+}
+
+/* Style pour l'effet de zoom au survol */
+.image-container:hover .image-zoom {
+  transform: scale(1.1); /* Ajustez la valeur pour obtenir l'effet désiré */
+}
+
+/* Style pour le conteneur de l'audio */
+.audio-container {
+  text-align: center; /* Centre le contenu */
+  width: 100%; /* Utilise toute la largeur disponible */
+  padding: 0 1rem; /* Ajoute un peu de padding des deux côtés */
+}
+
+/* Style pour l'élément audio */
+.audio-container audio {
+  width: calc(100% - 2rem); /* Calcule la largeur en soustrayant le padding */
+  max-width: 100%; /* S'assure que l'audio ne dépasse pas le conteneur */
+  margin: auto; /* Centre l'élément audio horizontalement */
+}
+.bg-with-soft-gradient{
+     background: linear-gradient(
+    to bottom, 
+    rgba(255, 255, 255, 0.8) 10%, 
+    rgba(255, 255, 255, 0.6) 40%, 
+    rgba(255, 255, 255, 0.3) 80%
+  );
+}

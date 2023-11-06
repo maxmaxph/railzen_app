@@ -8,6 +8,7 @@ import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.com
 import { SessionCardComponent } from './components/session-card/session-card.component';
 import { CategoryCardComponent } from './components/category-card/category-card.component';
 import { CategoryListComponent } from './components/category-list/category-list.component';
+import { SessionListComponent } from './components/session-list/session-list.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -17,6 +18,7 @@ const routes: Routes = [
   { path: 'submit', component: PageSubmitSessionComponent },
   { path: 'card', component: CategoryCardComponent },
   { path: 'session-card', component: SessionCardComponent },
+  { path: 'sessions/:categoryId', component: SessionListComponent },
   { path: 'category', component: CategoryListComponent },
   { path: '**', component: PageNotFoundComponent },
 ];

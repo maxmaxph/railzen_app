@@ -1,7 +1,7 @@
 import { Media } from "./media";
 
 export interface Session {
-//   session_id: number;
+  session_id: number;
   title: string;
   description: string;
   duration: string;

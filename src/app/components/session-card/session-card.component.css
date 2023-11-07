@@ -37,3 +37,35 @@
     rgba(255, 255, 255, 0.3) 80%
   );
 }
+audio::-webkit-media-controls-play-button {
+  background-color: #B1D4E0;
+  border-radius: 50%;
+}
+
+audio::-webkit-media-controls-play-button:hover {
+  background-color: rgba(177,212,224, .7);
+   transform: scale(1.4); /* Agrandit le bouton */
+  transition: transform 0.3s ease; /* Animation douce pour l'agrandissement */
+}
+
+audio::-webkit-media-controls-timeline {
+  background-color: #B1D4E0;
+  border-radius: 25px;
+  margin-left: 10px;
+  margin-right: 10px;
+  
+}
+audio::-webkit-media-controls-timeline:hover {
+transform: scale(1.1); /* Agrandit le bouton */
+  transition: transform 0.3s ease; /* Animation douce pour l'agrandissement */
+}
+
+audio::-webkit-media-controls-mute-button {
+  background-color: #B1D4E0;
+  border-radius: 50%;
+}
+
+audio::-webkit-media-controls-mute-button:hover {
+ transform: scale(1.3); /* Agrandit le bouton */
+  transition: transform 0.3s ease; /* Animation douce pour l'agrandissement */
+} 

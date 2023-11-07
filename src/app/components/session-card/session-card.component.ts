@@ -2,12 +2,15 @@ import {
   Component,
   Input,
   OnChanges,
+  OnDestroy,
   OnInit,
   SimpleChanges,
 } from '@angular/core';
 import { Session } from 'src/app/interfaces/session';
 import { SessionService } from 'src/app/services/session.service';
 import { animate, style, transition, trigger } from '@angular/animations';
+import { ActivatedRoute } from '@angular/router';
+
 @Component({
   selector: 'app-session-card',
   templateUrl: './session-card.component.html',
@@ -24,6 +27,7 @@ import { animate, style, transition, trigger } from '@angular/animations';
 })
 export class SessionCardComponent implements OnInit, OnChanges {
   @Input() session!: Session;
+  selectedSession?: Session; // Ajoutez cette ligne pour stocker les détails de la session sélectionnée
   meditAudio?: string | ArrayBuffer | null;
   randomImage: string = '';
   images: string[] = [
@@ -98,10 +102,19 @@ export class SessionCardComponent implements OnInit, OnChanges {
   nextImage: string = '';
   isTransitioning: boolean = false;
 
-  constructor(private sessionService: SessionService) {}
+  constructor(
+    private sessionService: SessionService,
+    private route: ActivatedRoute
+  ) { }
 
   ngOnInit(): void {
     this.setRandomImage(); // Définissez une image aléatoire pour la session
+    this.route.params.subscribe((params) => {
+      const sessionId = +params['sessionId'];
+      if (sessionId) {
+        this.loadSessionDetails(sessionId);
+      }
+    });
   }
 
   // Méthode pour définir une image aléatoire
@@ -129,13 +142,36 @@ export class SessionCardComponent implements OnInit, OnChanges {
         );
     }
   }
+  loadSessionDetails(sessionId: number): void {
+    this.sessionService.getSessionById(sessionId).subscribe(
+      (session: Session) => {
+        this.session = session;
+        if (session.media_id && session.media_id.media_id) {
+          this.loadMedia(session.media_id.media_id);
+        }
+      },
+      (error) => {
+        console.error('Error fetching session details', error);
+      }
+    );
+  }
 
-  createAudioFromBlob(audioBlob: Blob) {
+  loadMedia(mediaId: number): void {
+    this.sessionService.getMediaBlob(mediaId).subscribe(
+      (blob: Blob) => {
+        this.createAudioFromBlob(blob);
+      },
+      (error) => {
+        console.error('Error loading media blob', error);
+      }
+    );
+  }
+
+  createAudioFromBlob(audioBlob: Blob): void {
     const reader = new FileReader();
     reader.readAsDataURL(audioBlob);
     reader.onloadend = () => {
       this.meditAudio = reader.result; // Ceci est utilisé comme source dans l'élément <audio>
     };
   }
-
 }

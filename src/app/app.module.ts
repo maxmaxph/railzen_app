@@ -18,6 +18,10 @@ import { CategoryCardComponent } from './components/category-card/category-card.
 import { CategoryListComponent } from './components/category-list/category-list.component';
 import { SessionListComponent } from './components/session-list/session-list.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { PageUserComponent } from './pages/page-user/page-user.component';
+import { PageAdminComponent } from './pages/page-admin/page-admin.component';
+
+
 
 @NgModule({
   declarations: [
@@ -34,6 +38,10 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     CategoryCardComponent,
     CategoryListComponent,
     SessionListComponent,
+    PageUserComponent,
+    PageAdminComponent,
+   
+    
   ],
   imports: [
     BrowserModule,

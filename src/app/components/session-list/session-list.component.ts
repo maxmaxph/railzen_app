@@ -1,6 +1,6 @@
 // session-list.component.ts
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { SessionService } from 'src/app/services/session.service';
 import { Session } from 'src/app/interfaces/session';
 
@@ -11,10 +11,11 @@ import { Session } from 'src/app/interfaces/session';
 })
 export class SessionListComponent implements OnInit {
   sessions: Session[] = [];
-
+  
   constructor(
     private sessionService: SessionService,
-    private route: ActivatedRoute // Injectez ActivatedRoute ici
+    private route: ActivatedRoute, // Injectez ActivatedRoute ici
+    private router: Router // Injectez le Router ici
   ) {}
 
   ngOnInit(): void {
@@ -22,6 +23,7 @@ export class SessionListComponent implements OnInit {
       const categoryId = +params['categoryId']; // Convertit la chaîne en nombre
       this.loadSessions(categoryId);
     });
+    
   }
 
   loadSessions(categoryId: number): void {
@@ -34,4 +36,11 @@ export class SessionListComponent implements OnInit {
       }
     );
   }
+
+  onSessionSelected(sessionId: number): void {
+    // Naviguez vers la route qui affiche les sessions pour la catégorie sélectionnée
+    this.router.navigate(['/sessions/details', sessionId]);
+  }
+
+  
 }

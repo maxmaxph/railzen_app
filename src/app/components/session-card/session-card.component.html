@@ -1,3 +1,4 @@
+<div *ngIf="session; else loading">
 <div class="h-2 container "></div>
 <div class="flex flex-wrap justify-center bg-red-lightest">
   <div class="bg-with-soft-gradient shadow-lg rounded-lg w-full md:max-w-xl lg:max-w-3xl mx-4 my-4">
@@ -18,11 +19,17 @@
     </div>
     <div class="mx-8 py-4 ">
      <div class="audio-container mt-1">
-  <audio *ngIf="meditAudio" controls>
-    <source [src]="meditAudio" type="audio/mpeg">
-    Votre navigateur ne supporte pas l'élément audio.
-  </audio>
+ 
+<audio *ngIf="meditAudio" controls>
+  <source [src]="meditAudio" type="audio/mpeg">
+  Votre navigateur ne supporte pas l'élément audio.
+</audio>
+
 </div>
     </div>
   </div>
 </div>
+</div>
+<ng-template #loading>
+  <p>Chargement des détails de la session...</p>
+</ng-template>

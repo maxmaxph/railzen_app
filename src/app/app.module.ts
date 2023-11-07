@@ -20,6 +20,7 @@ import { SessionListComponent } from './components/session-list/session-list.com
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { PageUserComponent } from './pages/page-user/page-user.component';
 import { PageAdminComponent } from './pages/page-admin/page-admin.component';
+import { AdminTableComponent } from './components/admin-table/admin-table.component';
 
 
 
@@ -40,6 +41,7 @@ import { PageAdminComponent } from './pages/page-admin/page-admin.component';
     SessionListComponent,
     PageUserComponent,
     PageAdminComponent,
+    AdminTableComponent,
    
     
   ],

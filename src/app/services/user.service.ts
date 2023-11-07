@@ -1,7 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { BehaviorSubject, Observable, tap } from 'rxjs';
+import { BehaviorSubject, Observable, catchError, tap, throwError } from 'rxjs';
 import { User } from '../interfaces/user';
 import { Token } from '../interfaces/token';
 import jwt_decode from 'jwt-decode'; // Assurez-vous d'avoir installé jwt-decode
@@ -13,7 +13,7 @@ export class UserService {
   private userLoggedIn = new BehaviorSubject<boolean>(false);
   userLoggedIn$ = this.userLoggedIn.asObservable();
 
-  constructor(private readonly http: HttpClient, private router: Router) {}
+  constructor(private readonly http: HttpClient, private router: Router) { }
   url: string = `http://localhost:3000/api/`;
 
   private getHttpOptions() {
@@ -57,12 +57,12 @@ export class UserService {
   }
 
   getAllUsers(): Observable<User[]> {
-    return this.http.get<User[]>(`${this.url}user`, this.getHttpOptions());
+    return this.http.get<User[]>(`${this.url}users`, this.getHttpOptions());
   }
 
   deleteUser(id: number): Observable<User> {
     return this.http.delete<User>(
-      `${this.url}user/${id}`,
+      `${this.url}users/${id}`,
       this.getHttpOptions()
     );
   }
@@ -81,5 +81,17 @@ export class UserService {
     } else {
       throw new Error('User ID not found in localStorage');
     }
+  }
+
+  updateUser(user: User): Observable<User> {
+    return this.http.patch<User>(`${this.url}users/${user.user_id}`, user, this.getHttpOptions()).pipe(
+      tap(updatedUser => {
+        console.log('Utilisateur mis à jour :', updatedUser);
+      }),
+      catchError(error => {
+        console.error('Erreur lors de la mise à jour de l’utilisateur', error);
+        return throwError(() => new Error('Erreur lors de la mise à jour de l’utilisateur'));
+      })
+    );
   }
 }

@@ -9,17 +9,41 @@
                 <th scope="col">Nom</th>
                 <th scope="col">Prénom</th>
                 <th scope="col">Email</th>
+                <th scope="col">Rôle Id</th>
                 <th scope="col">Actions</th>
             </tr>
         </thead>
         <tbody>
-            <tr *ngFor="let user of users; let i = index">
-                <th scope="row">{{ i + 1 }}</th>
-                <td data-column="Nom:"> {{ user.last_name }} </td>
-                <td data-column="Prénom:"> {{ user.first_name }} </td>
-                <td data-column="Email:"> {{ user.email }} </td>
-                <td>
-                    <button class="btn btn-danger btn-sm" (click)="deleteUser(user.user_id)">
+  <tr *ngFor="let user of users; let i = index">
+    <th scope="row">{{ i + 1 }}</th>
+    <td data-column="Nom:">
+      <div *ngIf="editingUserId === user.user_id; else viewLastName">
+        <input type="text" [(ngModel)]="user.last_name" class="form-control">
+      </div>
+      <ng-template #viewLastName>{{ user.last_name }}</ng-template>
+    </td>
+    <td data-column="Prénom:">
+      <div *ngIf="editingUserId === user.user_id; else viewFirstName">
+        <input type="text" [(ngModel)]="user.first_name" class="form-control">
+      </div>
+      <ng-template #viewFirstName>{{ user.first_name }}</ng-template>
+    </td>
+    <td data-column="Email:">
+      <div *ngIf="editingUserId === user.user_id; else viewEmail">
+        <input type="email" [(ngModel)]="user.email" class="form-control">
+      </div>
+      <ng-template #viewEmail>{{ user.email }}</ng-template>
+    </td>
+    <td data-column="Rôle">
+      <div *ngIf="editingUserId === user.user_id; else viewRoleId">
+        <input type="number" [(ngModel)]="user.role_id" class="form-control">
+      </div>
+      <ng-template #viewRoleId>{{ user.role_id }}</ng-template>
+    </td>
+    <td> <button *ngIf="editingUserId === user.user_id" (click)="saveUser(user)" class="btn btn-success">Sauvegarder</button>
+      <button *ngIf="editingUserId !== user.user_id" (click)="editUser(user.user_id!)" class="btn btn-primary">Éditer</button>
+      <button *ngIf="editingUserId === user.user_id" (click)="cancelEdit()" class="btn btn-warning">Annuler</button>
+                    <button class="btn btn-danger btn-sm" (click)="deleteUser(user.user_id!)">
                         <i class="fa fa-trash" aria-hidden="true" ></i> Supprimer
                     </button>
                 </td>

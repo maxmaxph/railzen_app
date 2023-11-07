@@ -19,6 +19,7 @@ export class AdminTableComponent implements OnInit {
   categories: Category[] = [];
   isModalVisible: boolean = false;
   deletedEntityType: string = '';
+  editingUserId: number | null = null;
 
   constructor(
     private userService: UserService,
@@ -46,6 +47,32 @@ export class AdminTableComponent implements OnInit {
         console.error('Erreur lors du soft delete', error);
       },
     });
+  }
+  editUser(userId: number): void {
+    this.editingUserId = userId;
+  }
+
+  saveUser(user: User): void {
+    this.userService.updateUser(user).subscribe({
+      next: (updatedUser) => {
+        // Mettre à jour l'utilisateur dans la liste des utilisateurs
+        const index = this.users.findIndex(
+          (u) => u.user_id === updatedUser.user_id
+        );
+        if (index !== -1) {
+          this.users[index] = updatedUser;
+        }
+        this.editingUserId = null;
+      },
+      error: (error) => {
+        console.error('Erreur lors de la mise à jour de l’utilisateur', error);
+      },
+    });
+  }
+
+  cancelEdit(): void {
+    this.editingUserId = null;
+    // Vous pouvez également recharger les utilisateurs ici si vous voulez annuler les modifications non sauvegardées
   }
 
   deleteSession(id: number): void {

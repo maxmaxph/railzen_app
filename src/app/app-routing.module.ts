@@ -10,6 +10,7 @@ import { CategoryCardComponent } from './components/category-card/category-card.
 import { CategoryListComponent } from './components/category-list/category-list.component';
 import { SessionListComponent } from './components/session-list/session-list.component';
 import { PageUserComponent } from './pages/page-user/page-user.component';
+import { PageAdminComponent } from './pages/page-admin/page-admin.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -20,7 +21,8 @@ const routes: Routes = [
   { path: 'card', component: CategoryCardComponent },
   { path: 'session-card', component: SessionCardComponent },
   { path: 'sessions/:categoryId', component: SessionListComponent },
-  {path: 'sessions/details/:sessionId', component:SessionCardComponent},
+  { path: 'sessions/details/:sessionId', component: SessionCardComponent },
+  { path: 'admin', component: PageAdminComponent },
   { path: 'category', component: CategoryListComponent },
   { path: 'user', component: PageUserComponent },
   { path: '**', component: PageNotFoundComponent },

@@ -5,5 +5,5 @@ export interface User {
   email: string;
   password: string;
   // date_in: Date;
-  // role_id: number
+  role_id?: number
 }

@@ -32,13 +32,13 @@ export class PageConnectComponent {
           console.log('je suis dans le submit et je récupère res = ', res);
           const token = res.accessToken; // On récupère le token
 
-          // Stocker le token dans le localStorage
+          // token dans le localStorage
           localStorage.setItem('token', token);
 
-          // 2 - Utilisation du behaviour subject (du UserService) pour transmettre la valeur true
+          //behaviour subject (du UserService) pour transmettre la valeur true
           this.userService.setLoggedIn(true);
 
-          // Afficher la modale de succès
+          // la modale de succès
           const loginModalElement = document.getElementById(
             'loginModal'
           ) as HTMLElement;

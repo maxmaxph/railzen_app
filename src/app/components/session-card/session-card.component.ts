@@ -1,15 +1,19 @@
 import {
   Component,
+  EventEmitter,
   Input,
   OnChanges,
   OnDestroy,
   OnInit,
+  Output,
   SimpleChanges,
 } from '@angular/core';
 import { Session } from 'src/app/interfaces/session';
 import { SessionService } from 'src/app/services/session.service';
 import { animate, style, transition, trigger } from '@angular/animations';
 import { ActivatedRoute } from '@angular/router';
+import { HttpHeaders } from '@angular/common/http';
+import { FavoriteService } from 'src/app/services/favorite.service';
 
 @Component({
   selector: 'app-session-card',
@@ -26,7 +30,9 @@ import { ActivatedRoute } from '@angular/router';
   ],
 })
 export class SessionCardComponent implements OnInit, OnChanges {
+  @Output() favoriteChanged = new EventEmitter();
   @Input() session!: Session;
+  isFavorite: boolean = false;
   selectedSession?: Session; // Ajoutez cette ligne pour stocker les détails de la session sélectionnée
   meditAudio?: string | ArrayBuffer | null;
   randomImage: string = '';
@@ -103,18 +109,34 @@ export class SessionCardComponent implements OnInit, OnChanges {
   isTransitioning: boolean = false;
 
   constructor(
+    private favoriteService: FavoriteService,
     private sessionService: SessionService,
     private route: ActivatedRoute
-  ) { }
-
+  ) {}
+  checkIfFavorite() {
+    const userId = parseInt(localStorage.getItem('userId') || '0', 10);
+    if (userId && this.session) {
+      this.favoriteService
+        .isFavorite(userId, this.session.session_id)
+        .subscribe(
+          (isFavorite: boolean) => {
+            this.isFavorite = isFavorite;
+          },
+          (error) => {
+            console.error('Erreur lors de la vérification des favoris', error);
+          }
+        );
+    }
+  }
   ngOnInit(): void {
-    this.setRandomImage(); // Définissez une image aléatoire pour la session
+    this.setRandomImage(); // image aléatoire pour la session
     this.route.params.subscribe((params) => {
       const sessionId = +params['sessionId'];
       if (sessionId) {
         this.loadSessionDetails(sessionId);
       }
     });
+    this.checkIfFavorite();
   }
 
   // Méthode pour définir une image aléatoire
@@ -173,5 +195,64 @@ export class SessionCardComponent implements OnInit, OnChanges {
     reader.onloadend = () => {
       this.meditAudio = reader.result; // Ceci est utilisé comme source dans l'élément <audio>
     };
+  }
+
+  // Ajouter une session aux favoris
+  addFavorites(sessionId: number) {
+    const userId = parseInt(localStorage.getItem('userId') || '0', 10);
+    if (!userId) {
+      console.error('ID utilisateur non trouvé dans localStorage');
+      return;
+    }
+    this.favoriteService.addToFavorites(userId, sessionId).subscribe(
+      (response) => console.log('Ajouté aux favoris avec succès', response),
+      (error) => console.error("Erreur lors de l'ajout aux favoris", error)
+    );
+  }
+  // Méthode pour basculer l'état des favoris
+  toggleFavorite() {
+    const sessionId = this.session.session_id;
+    const userId = parseInt(localStorage.getItem('userId') || '0', 10);
+
+    
+
+    if (!userId) {
+      console.error('ID utilisateur non trouvé dans localStorage');
+      return;
+    }
+
+    if (this.isFavorite) {
+      // Supprimer des favoris
+      this.favoriteService.removeFromFavorites(userId, sessionId).subscribe(
+        () => {
+          console.log('Enlevé des favoris avec succès');
+          this.isFavorite = false;
+          this.favoriteService.refreshFavorites(userId);
+          this.favoriteChanged.emit();
+          console.log(
+            'Current isFavorite state before toggle:',
+            this.isFavorite
+          ); // État actuel avant basculement
+        },
+        (error) => console.error('Erreur lors du retrait des favoris', error)
+      );
+    } else {
+      // Ajouter aux favoris
+      this.favoriteService.addToFavorites(userId, sessionId).subscribe(
+        () => {
+          console.log('Ajouté aux favoris avec succès');
+          this.isFavorite = true;
+          this.favoriteService.refreshFavorites(userId);
+          this.favoriteChanged.emit();
+          console.log(
+            'Current isFavorite state after toggle:',
+            this.isFavorite
+          ); // État actuel après basculement
+        },
+        (error) => console.error("Erreur lors de l'ajout aux favoris", error)
+      );
+    }
+
+    console.log('Current isFavorite state after toggle:', this.isFavorite); // État actuel après basculement
   }
 }

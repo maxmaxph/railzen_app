@@ -31,7 +31,16 @@ export class CategoryService {
       )
     );
   }
-
+  updateCategory(category: Category): Observable<Category> {
+    return this.http.patch<Category>(
+      `${this.url}/${category.category_id}`,
+      category,
+      this.getHttpOptions()
+    );
+  }
+  deleteCategory(categoryId: number): Observable<any> {
+    return this.http.delete(`${this.url}/${categoryId}`, this.getHttpOptions());
+  }
   private getImageForCategory(category: Category): string {
     const images: { [key: number]: string } = {
       2: 'assets/img/img_category/atteinte.jpg',
@@ -42,7 +51,9 @@ export class CategoryService {
       7: 'assets/img/img_category/detente.jpg',
     };
 
-    return images[category.category_id] || 'assets/img/img_category/detente.jpg';
+    return (
+      images[category.category_id] || 'assets/img/img_category/detente.jpg'
+    );
   }
 
   getCategoryById(id: number): Observable<Category> {

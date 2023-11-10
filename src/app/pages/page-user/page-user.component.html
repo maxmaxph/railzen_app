@@ -61,10 +61,20 @@
     </div>
   </div>
 </div>
+ 
+<div *ngIf="favoriteSessions.length > 0">
+  <h3>Mes Sessions Favorites</h3>
+  <div *ngFor="let session of favoriteSessions">
+    <app-session-card [session]="session" (favoriteChanged)="subscribeToFavorites()"></app-session-card>
+  </div>
 </div>
+
+</div>
+
 <!-- Confirmation Modal -->
 
 <div class="fixed z-10 inset-0 overflow-y-auto" aria-labelledby="modal-title" role="dialog" aria-modal="true" style="display: none;">
-  
-  </div>
+
+</div>
+
 

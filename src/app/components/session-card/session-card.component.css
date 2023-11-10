@@ -1,3 +1,6 @@
+.button{
+  z-index: 999;
+}
 /* Style pour le conteneur de l'image */
 .image-container {
   overflow: hidden; /* Empêche l'image agrandie de déborder */

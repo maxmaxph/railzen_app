@@ -31,7 +31,7 @@ export class PageSubscribeComponent {
     if (this.subscribeForm.valid) {
       const formData = this.subscribeForm.value;
 
-      // Créez un objet User avec les propriétés requises
+      //creation un objet User avec les propriétés requises
       const newUser: User = {
         first_name: formData.inputFirstName,
         last_name: formData.inputLastName,
@@ -46,17 +46,17 @@ export class PageSubscribeComponent {
           console.log('Réponse du serveur:', response);
           console.log('Inscription réussie');
 
-          // Réinitialisez le formulaire
+         
           this.subscribeForm.reset();
 
-          // Affichage de la modal de succès
+          //   modal de succès
           const modalElement = document.getElementById('subscribeModal');
           const modalInstance = new Modal(modalElement!);
           modalInstance.show();
         },
         (error) => {
           console.error('Erreur lors de l’inscription:', error);
-          // Affichez une modal d'erreur ou un message d'erreur ici
+         
         }
       );
     } else {
@@ -64,8 +64,5 @@ export class PageSubscribeComponent {
     }
   }
 
-  goToHome() {
-    close();
-    window.location.href = 'login';
-  }
+ 
 }

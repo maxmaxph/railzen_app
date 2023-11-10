@@ -1,6 +1,9 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
 import { Router } from '@angular/router';
+import { Subscription } from 'rxjs';
+
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-page-home',
@@ -8,7 +11,8 @@ import { Router } from '@angular/router';
   styleUrls: ['./page-home.component.css'],
 })
 export class PageHomeComponent implements OnInit, OnDestroy {
-  isNavbarVisible: boolean = false;
+  private subscription: Subscription = new Subscription;
+
   images: string[] = [
     './assets/controleuse.svg',
     './assets/bureau.svg',
@@ -21,31 +25,38 @@ export class PageHomeComponent implements OnInit, OnDestroy {
   nextImage: any;
   interval: any;
 
-  constructor(private sanitizer: DomSanitizer, private router: Router) {}
+  constructor(private userService: UserService, private sanitizer: DomSanitizer, private router: Router) {}
 
   ngOnInit() {
+this.subscription = this.userService.userLoggedIn$.subscribe((loggedIn) => {
+  if (loggedIn) {
+    this.router.navigate(['/category']); // Rediriger si l'utilisateur est connecté
+  }
+});
+
     setTimeout(() => {
-      // Une fois le délai écoulé, naviguez vers la page principale
-      this.router.navigate(['/home']); // Remplacez '/home' par le chemin de votre page principale
+      this.router.navigate(['/home']);
     }, 2000);
 
-    // Afficher la première image immédiatement
+    //  première image immédiatement
     this.currentImage = this.sanitizer.bypassSecurityTrustResourceUrl(
       this.images[this.currentIndex]
     );
 
-    // Précharger la deuxième image (nextImage)
+    //la deuxième image (nextImage)
     this.preloadNextImage();
 
-    // Démarrez l'intervalle pour changer les images toutes les 5 secondes (5000 ms)
+    // intervalle pour changer les images
     this.interval = setInterval(() => {
       this.changeImage();
-    }, 5000); // Vous pouvez ajuster l'interval ici
+    }, 5000);
   }
 
   ngOnDestroy() {
-    // Assurez-vous d'effacer l'intervalle lorsque le composant est détruit pour éviter les fuites de mémoire
+    //  composant est détruit pour éviter les fuites de mémoire
     clearInterval(this.interval);
+
+    this.subscription.unsubscribe(); // Nettoyer l'abonnement
   }
 
   preloadNextImage() {
@@ -56,16 +67,16 @@ export class PageHomeComponent implements OnInit, OnDestroy {
   }
 
   changeImage() {
-    // Appliquer un fondu enchaîné en modifiant progressivement l'opacité
+    // fondu enchaîné en modifiant progressivement l'opacité
     const nextIndex = (this.currentIndex + 1) % this.images.length;
 
-    // Précharger l'image suivante
+    // Précharg l'image suivante
     this.preloadNextImage();
 
-    // Changer l'image actuelle avec une transition de fondu
+    // Change l'image actuelle avec  fondu
     setTimeout(() => {
       this.currentIndex = nextIndex;
       this.currentImage = this.nextImage;
-    }, 500); // Temps de transition en millisecondes (ajustez selon vos besoins)
+    }, 500);
   }
 }

@@ -1,5 +1,5 @@
 import { Media } from "./media";
-
+import { Category } from "./category";
 export interface Session {
   session_id: number;
   title: string;
@@ -9,4 +9,5 @@ export interface Session {
 //   date_added: Date;
   category_id: number;
   user_id: number;
+  category?: Category
 }

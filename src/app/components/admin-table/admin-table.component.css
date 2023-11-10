@@ -1,79 +1,41 @@
-.container {
-    margin-top: 100px;
-    margin-bottom: 50px;
+.wrapper{
+  padding-top: 100px;
 }
-.modal {
+
+@media (max-width: 640px) { /* ou utilisez 'sm' de Tailwind si vous préférez */
+  .table-responsive {
     display: block;
-    position: fixed;
-    z-index: 1;
-    padding-top: 100px;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    overflow: auto;
-    background-color: rgb(0,0,0);
-    background-color: rgba(0,0,0,0.4);
   }
 
-  .btn-edit{
-    background-color: rgb(255, 234, 0);
-    color: black;
-    margin-left: 8px;
+  .table-responsive thead {
+    display: none; /* Cache l'en-tête du tableau sur les petits écrans */
   }
 
-  .table td {
-    word-wrap: break-word;
-}
+  .table-responsive tbody tr {
+    display: block;
+    margin-bottom: 0.625rem; /* Espacement entre les cartes */
+  }
 
-@media (max-width: 768px) {
-  .table-responsive table, 
-  .table-responsive thead, 
-  .table-responsive tbody, 
-  .table-responsive th, 
-  .table-responsive td, 
-  .table-responsive tr { 
-    display: block; 
-  }
-  
-  .table-responsive thead tr { 
-    position: absolute;
-    top: -9999px;
-    left: -9999px;
-  }
-  
-  .table-responsive tr { 
-    margin-bottom: 1rem;
-  }
-  
-  .table-responsive td { 
-    border: none;
-    border-bottom: 1px solid #eee;
+  .table-responsive tbody tr td {
+    display: block;
+    text-align: right;
+    padding-left: 50%; /* Ajustez selon le contenu */
     position: relative;
-    padding-left: 50%;
-    text-align: right; /* Align text to the right to make space for the labels */
   }
-  
-  .table-responsive td:before { 
+
+  .table-responsive tbody tr td::before {
+    
     position: absolute;
-    top: 0;
-    left: 6px;
-    width: 45%;
-    padding-right: 10px;
-    white-space: nowrap;
-    content: attr(data-column);
-    text-align: left; /* Align the labels to the left */
+    left: 0;
+    width: 50%; /* Ajustez selon le contenu */
+    padding-left: 15px;
+    font-weight: bold;
+    text-align: left;
   }
-  
-  /* Additional styles to ensure inputs are not too wide on mobile */
-  .table-responsive td input[type="text"],
-  .table-responsive td input[type="email"],
-  .table-responsive td input[type="number"] {
-    width: 90%; /* Adjust as needed */
-    margin: 0; /* Adjust as needed */
-    padding: .375rem .75rem; /* Adjust as needed */
-  }
+
 }
+
+
 
   
   

@@ -21,6 +21,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { PageUserComponent } from './pages/page-user/page-user.component';
 import { PageAdminComponent } from './pages/page-admin/page-admin.component';
 import { AdminTableComponent } from './components/admin-table/admin-table.component';
+import { ErrorModalComponent } from './components/error-modal/error-modal.component';
 
 
 
@@ -42,6 +43,7 @@ import { AdminTableComponent } from './components/admin-table/admin-table.compon
     PageUserComponent,
     PageAdminComponent,
     AdminTableComponent,
+    ErrorModalComponent,
    
     
   ],

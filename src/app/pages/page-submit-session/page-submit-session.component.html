@@ -22,6 +22,7 @@
         <input type="file" class="form-control" id="sound_file" formControlName="media_id"  accept="audio/*" (change)="onAudioSelected($event)" required>
       </div>
       <button type="submit" class="btn btn-primary">Soumettre la Session</button>
+      <button [routerLink]="['/admin']" class="btn btn-primary">Retour</button>
     </form>
   </div>
 </body>

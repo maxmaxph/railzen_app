@@ -15,7 +15,7 @@ export class CategoryCardComponent {
   constructor(private sessionService: SessionService) {}
 
   @Input() category!: Category;
-  @Input() isAlternate!: boolean; // Cette propriété détermine le style de la carte
+  @Input() isAlternate!: boolean; //style de la carte
   @Output() categorySelected = new EventEmitter<number>();
 
   onCategorySelected(categoryId: number): void {

@@ -33,10 +33,6 @@ export class SessionService {
     );
   }
 
-  // getMediaUrl(mediaId: number): string {
-  //   // Assurez-vous que cette URL est correcte et pointe vers l'emplacement du fichier média
-  //   return `${this.bddUrl}/medias/${mediaId}`;
-  // }
   getMediaBlob(mediaId: number): Observable<Blob> {
     return this.http.get(`${this.bddUrl}/medias/${mediaId}`, {
       ...this.getHttpOptions(),

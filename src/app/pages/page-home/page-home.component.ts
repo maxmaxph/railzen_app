@@ -34,9 +34,7 @@ this.subscription = this.userService.userLoggedIn$.subscribe((loggedIn) => {
   }
 });
 
-    setTimeout(() => {
-      this.router.navigate(['/home']);
-    }, 2000);
+    
 
     //  première image immédiatement
     this.currentImage = this.sanitizer.bypassSecurityTrustResourceUrl(

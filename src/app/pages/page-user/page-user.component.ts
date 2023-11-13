@@ -14,7 +14,10 @@ import { UserService } from 'src/app/services/user.service';
 })
 export class PageUserComponent implements OnInit {
   user: User | null = null;
+  editedUser: User | null = null;
+
   favoriteSessions: Session[] = [];
+  
   private favoritesSubscription: Subscription | null = null;
 
   constructor(
@@ -47,6 +50,9 @@ export class PageUserComponent implements OnInit {
       }
     );
   }
+  
+
+  
 
   getInitials(): string {
     if (this.user && this.user.first_name && this.user.last_name) {
@@ -60,7 +66,6 @@ export class PageUserComponent implements OnInit {
   logout(): void {
     this.userService.logout();
   }
-
   confirmDelete(): void {
     // Open a confirmation modal
 

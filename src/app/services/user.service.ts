@@ -42,6 +42,19 @@ export class UserService {
     );
   }
 
+  hasRole(expectedRole: string): boolean {
+    const token = localStorage.getItem('token');
+    if (!token) return false;
+
+    try {
+      const decodedToken = jwt_decode(token) as any; // Décode le token JWT
+      return decodedToken.role === expectedRole; // Vérifie si le rôle correspond
+    } catch (error) {
+      console.error('Erreur lors du décodage du token:', error);
+      return false;
+    }
+  }
+
   subscribe(user: User): Observable<Token> {
     return this.http.post<Token>(`${this.url}auth/register`, user).pipe(
       tap((tokenResponse: Token) => {

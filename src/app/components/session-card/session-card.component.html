@@ -11,7 +11,8 @@
       <div class="w-full p-8">
         <div class="flex justify-between">
           <div>
-            <h3 class="text-2xl text-grey-darkest font-medium">{{ session.title }}</h3>
+            <h3 class="text-2xl text-grey-darkest font-bold">{{ session.title }}</h3>
+            <h2 class="text-1xl text-grey-darkest font-bold mt-1">{{ session.category?.name }}</h2>
             <p class="text-sm text-grey mt-1">{{ session.description }}</p>
             <button (click)="toggleFavorite()" class="btn" [ngClass]="{'btn-primary': !isFavorite, 'btn-secondary': isFavorite}">
   {{ isFavorite ? 'Enlever des Favoris' : 'Ajouter aux Favoris' }}

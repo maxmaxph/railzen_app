@@ -14,10 +14,12 @@ import { UserService } from 'src/app/services/user.service';
 })
 export class PageUserComponent implements OnInit {
   user: User | null = null;
-  editedUser: User | null = null;
+  isEditing: boolean = false;
+  newPassword: string = '';
+  confirmPassword: string = '';
 
   favoriteSessions: Session[] = [];
-  
+
   private favoritesSubscription: Subscription | null = null;
 
   constructor(
@@ -50,9 +52,6 @@ export class PageUserComponent implements OnInit {
       }
     );
   }
-  
-
-  
 
   getInitials(): string {
     if (this.user && this.user.first_name && this.user.last_name) {
@@ -126,6 +125,61 @@ export class PageUserComponent implements OnInit {
   ngOnDestroy(): void {
     if (this.favoritesSubscription) {
       this.favoritesSubscription.unsubscribe(); // Désabonnement lors de la destruction du composant
+    }
+  }
+
+  editUser(): void {
+    this.isEditing = true;
+  }
+
+  cancelEdit(): void {
+    this.isEditing = false;
+    // Recharger les données utilisateur pour annuler les modifications non enregistrées
+    this.getCurrentUser();
+  }
+
+  saveUser(): void {
+    if (this.user) {
+      this.userService.updateUser(this.user).subscribe({
+        next: (updatedUser) => {
+          this.user = updatedUser;
+          this.isEditing = false;
+          // Appeler updatePassword uniquement si le champ nouveau mot de passe est rempli
+          if (this.newPassword) {
+            this.updatePassword();
+          }
+        },
+        error: (error) => {
+          console.error(
+            'Erreur lors de la mise à jour de l’utilisateur',
+            error
+          );
+        },
+      });
+    }
+  }
+
+  updatePassword(): void {
+    if (this.newPassword !== this.confirmPassword) {
+      alert('Les mots de passe ne correspondent pas.');
+      return;
+    }
+
+    if (this.user && this.user.user_id) {
+      this.userService.updatePassword(this.newPassword).subscribe({
+        next: () => {
+          alert('Mot de passe mis à jour avec succès.');
+          this.newPassword = '';
+          this.confirmPassword = '';
+        },
+        error: (error) => {
+          console.error('Erreur lors de la mise à jour du mot de passe', error);
+          alert('Erreur lors de la mise à jour du mot de passe.');
+        },
+      });
+    } else {
+      console.error('user_id est undefined');
+      alert('Erreur : utilisateur non identifié.');
     }
   }
 }

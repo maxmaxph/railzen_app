@@ -161,4 +161,13 @@ export class UserService {
   getUserRole(): string | null {
     return this.userRole.getValue(); // Récupère la valeur actuelle du BehaviorSubject pour le rôle
   }
+
+  updatePassword(newPassword: string): Observable<any> {
+    const userId = localStorage.getItem('userId');
+    return this.http.patch(
+      `${this.url}users/change-password/${userId}`,
+      { newPassword },
+      this.getHttpOptions()
+    );
+  }
 }

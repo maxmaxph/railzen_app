@@ -18,21 +18,21 @@
     </button>
     </div>
     <div class="hidden w-full" id="navbar-hamburger">
-      <ul class="flex flex-col font-medium mt-4 rounded-lg bg-gray-50 dark:bg-gray-800 dark:border-gray-700 opacity-95">
+      <ul class="flex flex-col font-medium mt-4 rounded-lg bg-gray-50   opacity-95">
         <li>
-          <a   class="block py-2 pl-3 pr-4 text-white bg-blue-700 rounded dark:bg-blue-600" aria-current="page" [routerLink]="['/home'] " (click)="closeMenu()">Acceuil</a>
+          <a   class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-blue-200  " aria-current="page" [routerLink]="['/home'] " (click)="closeMenu()">Acceuil</a>
         </li>
         <li>
-          <a   *ngIf="isLoggedIn" class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white" [routerLink]="['/category']" (click)="closeMenu()" >Catégories</a>
+          <a   *ngIf="isLoggedIn" class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-blue-200 " [routerLink]="['/category']" (click)="closeMenu()" >Catégories</a>
         </li>
         <li>
-          <a   *ngIf="isLoggedIn && userRole === 'admin'" class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white" [routerLink]="['/admin']" (click)="closeMenu()">Admin</a>
+          <a   *ngIf="isLoggedIn && userRole === 'admin'" class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-blue-200  " [routerLink]="['/admin']" (click)="closeMenu()">Admin</a>
         </li>
         <li>
-          <a   class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white" (click)="closeMenu()">Contact</a>
+          <a   class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-blue-200 " (click)="closeMenu()">Contact</a>
         </li>
         <li>
-          <a   *ngIf="isLoggedIn" class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white" (click)="logout(); closeMenu()">Se deconnecter</a>
+          <a   *ngIf="isLoggedIn" class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-blue-200 " (click)="logout(); closeMenu()">Se deconnecter</a>
         </li>
       </ul>
     </div>

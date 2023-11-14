@@ -170,18 +170,19 @@ border: none;
   width: 100%;
   display: flex;
   justify-content: center;
-  align-items: flex-start;
+  align-items: center;
   opacity: 1; /* Masquez initialement les figurines */
   margin-top: 10px; /* Espace entre la figurine et le contenu */
-  padding-top: 7%;
+  padding-top:9%;
   z-index: 2;
 }
 
 .svg-figure {
-  margin-top: 20px;
+  
   animation: float 8s linear infinite; /* Vous pouvez ajuster la durée de l'animation ici */
-  filter: drop-shadow(0 0 0.2rem rgb(0, 0, 0));
-  transition: opacity 3s ease; /* Ajoutez cette ligne pour la transition de l'opacité */
+  transition: opacity 2s ease; /* Ajoutez cette ligne pour la transition de l'opacité */
+  width: 230px; /* ou toute autre valeur fixe ou relative */
+ 
 }
 
 /* Animation du diaporama */
@@ -189,34 +190,38 @@ border: none;
 @keyframes float {
   0%, 100% {
     transform: translateY(0);
-    opacity: 1;
+   
   }
 
   25% {
     transform: translateY(-20px);
-    opacity: 1;
+   
   }
 
   50% {
     transform: translateY(0);
-    opacity: 1;
+    
   }
 
   75% {
     transform: translateY(-20px);
-    opacity: 1;
+    
   }
 }
 
 /* Gestion de l'opacité pour les images SVG */
+
+.opacity-transition {
+  transition: opacity 2s ease-in-out;
+}
 .visible {
   opacity: 1;
-  transition: opacity 1s ease-in-out;
+  transition: opacity 2s ease-in-out;
 }
 
 .hidden {
   opacity: 0;
-  transition: opacity 1s ease-in-out;
+  transition: opacity 2s ease-in-out;
 }
 @media (max-width: 768px) {
   /* Styles pour les écrans de largeur maximale de 768px (Mobile) */
@@ -224,11 +229,11 @@ border: none;
     top: (100px + 20px); /* Hauteur de la navbar + marge entre la navbar et les figurines */
     align-items: center; /* Centrer la figurine verticalement */
     margin-top: 0; /* Aucun espace entre la figurine et le contenu */
-    padding-top: 27%;
+    padding-top: 32%;
   }
 
   .content {
-    padding-top: 400px; /* Aucun espacement en haut du contenu */
+    padding-top: 350px; /* Aucun espacement en haut du contenu */
   }
 }
 

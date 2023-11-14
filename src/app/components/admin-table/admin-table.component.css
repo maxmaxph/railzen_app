@@ -1,6 +1,32 @@
 .wrapper{
   padding-top: 100px;
 }
+/* Styles pour les boutons avec images SVG */
+.svg-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 5px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.3s ease;
+}
+
+.svg-button img {
+  width: 20px; /* Ajustez selon la taille souhaitée */
+  height: auto;
+  transition: transform 0.3s ease;
+}
+
+svg-delete:hover img{
+transform: scale(1.2);
+color: red
+}
+svg-logout:hover img{
+  transform: scale(1.2);
+color: red
+};
 
 @media (max-width: 640px) { /* ou utilisez 'sm' de Tailwind si vous préférez */
   .table-responsive {

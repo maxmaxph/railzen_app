@@ -30,7 +30,7 @@ export class PageHomeComponent implements OnInit, OnDestroy {
   ngOnInit() {
 this.subscription = this.userService.userLoggedIn$.subscribe((loggedIn) => {
   if (loggedIn) {
-    this.router.navigate(['/category']); // Redirige si l'utilisateur est connecté
+    this.router.navigate(['/category']); // Redirige vers category si l'utilisateur est connecté
   }
 });
 
@@ -75,6 +75,6 @@ this.subscription = this.userService.userLoggedIn$.subscribe((loggedIn) => {
     setTimeout(() => {
       this.currentIndex = nextIndex;
       this.currentImage = this.nextImage;
-    }, 500);
+    }, 1000);
   }
 }

@@ -11,6 +11,31 @@
   background: linear-gradient(to top, #24C6DC, #514A9D);
   z-index: -1; /* Place le fond derrière le contenu */
 }
+
+/* Styles pour les boutons avec images SVG */
+
+.svg-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 5px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.3s ease;
+}
+
+.svg-button img {
+  width: 20px; /* Ajustez selon la taille souhaitée */
+  height: auto;
+  transition: transform 0.3s ease;
+}
+.svg-button.svg-delete:hover img,
+.svg-button.svg-logout:hover img {
+  transform: scale(1.2); /* Zoom lors du survol */
+  color: red;
+}
+
 .bg-with-soft-gradient {
   background: linear-gradient(
     to bottom, 

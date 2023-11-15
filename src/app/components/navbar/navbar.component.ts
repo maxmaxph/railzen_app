@@ -1,6 +1,8 @@
 import { AfterViewInit, ChangeDetectorRef, Component, HostListener, OnInit } from '@angular/core';
 import { Collapse } from 'flowbite';
+import { Category } from 'src/app/interfaces/category';
 import { User } from 'src/app/interfaces/user';
+import { CategoryService } from 'src/app/services/category.service';
 import { UserService } from 'src/app/services/user.service';
 
 @Component({
@@ -8,45 +10,43 @@ import { UserService } from 'src/app/services/user.service';
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.css'],
 })
-export class NavbarComponent implements OnInit, AfterViewInit {
+export class NavbarComponent implements OnInit {
   isLoggedIn: boolean = false; // déclare la propriété isLoggedIn
   userRole: string | null = null; // déclare la propriété userRole
   user: User | null = null;
+  categories: Category[] = [];
+  private isMenuOpen: boolean = false;
   private collapseInstance: Collapse | null = null;
 
   constructor(
     private userService: UserService,
+    private categoryService: CategoryService,
     private changeDetectorRef: ChangeDetectorRef
   ) {}
   public navbarOpacityClass = 'opacity-85';
-  ngAfterViewInit(): void {
-    const targetEl = document.getElementById('navbar-hamburger') as HTMLElement;
-    const triggerEl = document.querySelector(
-      '[data-collapse-toggle="navbar-hamburger"]'
-    ) as HTMLElement;
-
-    if (targetEl && triggerEl) {
-      this.collapseInstance = new Collapse(targetEl, triggerEl, {
-        onCollapse: () => console.log('Collapsed'),
-        onExpand: () => console.log('Expanded'),
-        onToggle: () => console.log('Toggled'),
-      });
-    }
-  }
+ 
 
   ngOnInit(): void {
     this.userService.initializeUserState();
+    this.categoryService.getCategory().subscribe((categories) => {
+      this.categories = categories;
+      this.changeDetectorRef.detectChanges();
+    });
     this.userService.userLoggedIn$.subscribe((loggedIn) => {
+      console.log('isLoggedIn updated to: ', loggedIn);
       this.isLoggedIn = loggedIn;
+      this.changeDetectorRef.detectChanges();
     });
 
     this.userService.userRole$.subscribe((role) => {
       this.userRole = role;
+      this.changeDetectorRef.detectChanges();
     });
     this.userService.getCurrentUser().subscribe((userData: User) => {
       this.user = userData;
-      this.changeDetectorRef.markForCheck();
+      this.changeDetectorRef.detectChanges();
     });
+    
   }
   @HostListener('window:scroll', [])
   onWindowScroll() {
@@ -58,17 +58,9 @@ export class NavbarComponent implements OnInit, AfterViewInit {
     }
   }
 
-  closeMenu(): void {
-    if (this.collapseInstance) {
-      this.collapseInstance.collapse();
-    }
-  }
 
-  toggleMenu(): void {
-    if (this.collapseInstance) {
-      this.collapseInstance.toggle();
-    }
-  }
+
+ 
   logout(): void {
     this.userService.logout();
   }

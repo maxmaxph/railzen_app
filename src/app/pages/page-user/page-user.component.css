@@ -31,9 +31,9 @@
   transition: transform 0.3s ease;
 }
 .svg-button.svg-delete:hover img,
-.svg-button.svg-logout:hover img {
+.svg-button.svg-logout:hover img, .svg-button.svg-edit:hover img {
   transform: scale(1.2); /* Zoom lors du survol */
-  color: red;
+  
 }
 
 .bg-with-soft-gradient {

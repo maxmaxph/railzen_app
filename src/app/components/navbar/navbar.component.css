@@ -1,0 +1,11 @@
+.svg-icon {
+    margin-left: 5px;
+  width: auto; /* Ajustez selon la taille souhaitée */
+  height: 20px;
+  transition: transform 0.3s ease;
+}
+.svg-icon:hover
+{
+  transform: scale(1.2); /* Zoom lors du survol */
+  
+}

@@ -13,11 +13,17 @@ import { PageUserComponent } from './pages/page-user/page-user.component';
 import { PageAdminComponent } from './pages/page-admin/page-admin.component';
 import { userGuard } from './guards/user.guard';
 import { adminGuard } from './guards/admin.guard';
+import { PageInfosComponent } from './pages/page-infos/page-infos.component';
+import { ContactComponent } from './components/contact/contact.component';
 
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: 'home', component: PageHomeComponent },
+  {
+    path: 'infos',
+    component: PageInfosComponent,
+  },
   { path: 'connect', component: PageConnectComponent },
   { path: 'subscribe', component: PageSubscribeComponent },
   {
@@ -51,6 +57,14 @@ const routes: Routes = [
     path: 'user',
     component: PageUserComponent,
     canActivate: [userGuard],
+  },
+  {
+    path: 'infos',
+    component: PageInfosComponent,
+  },
+  {
+    path: 'contact',
+    component: ContactComponent,
   },
   { path: '**', component: PageNotFoundComponent },
 ];

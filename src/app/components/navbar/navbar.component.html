@@ -81,7 +81,7 @@
       <ul
         class="flex flex-col font-medium mt-4 rounded-lg bg-gray-50 opacity-95"
       >
-        <li class="flex items-center hover:bg-blue-200">
+        <li class="flex items-center hover:bg-blue-200" [routerLink]="['/home']">
           <img
             class="svg-icon"
             src="/assets/img/icons/home_blue.svg"
@@ -90,22 +90,24 @@
           <a
             class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-blue-200"
             aria-current="page"
-            [routerLink]="['/home']"
+            
             >Acceuil</a
           >
         </li>
         <li
           *ngIf="isLoggedIn"
           class="flex items-center rounded hover:bg-blue-200"
+          [routerLink]="['/category']"
         >
           <img
             class="svg-icon"
             src="/assets/img/icons/category_blue.svg"
             alt="Administration"
+            
           />
           <a
             class="block py-2 pl-3 pr-4 text-gray-900"
-            [routerLink]="['/category']"
+            
             >Toutes Catégories</a
           >
         </li>
@@ -113,6 +115,7 @@
           <li
             *ngFor="let category of categories"
             class="flex items-center rounded hover:bg-blue-200"
+            [routerLink]="['/sessions', category.category_id]"
           >
             <img
               class="svg-icon"
@@ -120,7 +123,7 @@
               alt="méditations"
             />
             <a
-              [routerLink]="['/sessions', category.category_id]"
+              
               class="block py-2 pl-3 pr-4 text-gray-700 rounded"
             >
               {{ category.name }}
@@ -131,6 +134,7 @@
         <li
           *ngIf="isLoggedIn && userRole === 'admin'"
           class="flex items-center rounded hover:bg-blue-200"
+          [routerLink]="['/admin']"
         >
           <img
             class="svg-icon"
@@ -139,24 +143,25 @@
           />
           <a
             class="block py-2 pl-3 pr-4 text-gray-900"
-            [routerLink]="['/admin']"
+            
             >Admin</a
           >
         </li>
         <li
           *ngIf="isLoggedIn"
           class="flex items-center rounded hover:bg-blue-200"
+          [routerLink]="['/user']"
         >
           <img
             class="svg-icon"
             src="/assets/img/icons/user_blue.svg"
             alt="Profil utilisateur"
           />
-          <a [routerLink]="['/user']" class="block py-2 pl-3 pr-4 text-gray-900"
+          <a  class="block py-2 pl-3 pr-4 text-gray-900"
             >Mon profil</a
           >
         </li>
-        <li class="flex items-center rounded hover:bg-blue-200">
+        <li class="flex items-center rounded hover:bg-blue-200" [routerLink]="['/contact']">
           <img
             class="svg-icon"
             src="/assets/img/icons/mail_blue.svg"
@@ -164,11 +169,12 @@
           />
           <a class="block py-2 pl-3 pr-4 text-gray-900">Contact</a>
         </li>
-        <li class="flex items-center rounded hover:bg-blue-200">
+        <li class="flex items-center rounded hover:bg-blue-200" [routerLink]="['/infos']">
           <img
             class="svg-icon"
             src="/assets/img/icons/infos_blue.svg"
             alt="A propos"
+            
           />
           <a class="block py-2 pl-3 pr-4 text-gray-900">A propos</a>
         </li>

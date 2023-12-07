@@ -25,6 +25,7 @@ import { ErrorModalComponent } from './components/error-modal/error-modal.compon
 
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -44,8 +45,6 @@ import { ErrorModalComponent } from './components/error-modal/error-modal.compon
     PageAdminComponent,
     AdminTableComponent,
     ErrorModalComponent,
-   
-    
   ],
   imports: [
     BrowserModule,
@@ -54,6 +53,7 @@ import { ErrorModalComponent } from './components/error-modal/error-modal.compon
     ReactiveFormsModule,
     HttpClientModule,
     BrowserAnimationsModule,
+   
   ],
   providers: [],
   bootstrap: [AppComponent],

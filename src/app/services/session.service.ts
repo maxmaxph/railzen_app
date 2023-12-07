@@ -41,9 +41,7 @@ export class SessionService {
   }
 
   addSession(session: any): Observable<any> {
-    console.log('MEDITATION ENVOYER', session);
-    const token = localStorage.getItem('token');
-    return this.http.post<Session>(
+      return this.http.post<Session>(
       `${this.bddUrl}/sessions`,
       session,
       this.getHttpOptions()

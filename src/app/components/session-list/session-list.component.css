@@ -1,4 +1,4 @@
- .container{
+.container{
     padding: 4rem 0; /* Ajoutez du padding en haut et en bas si nécessaire */}
 .container::before {
   content: "";

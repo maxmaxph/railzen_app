@@ -1,8 +1,7 @@
 <div class="container">
 <div *ngIf="sessions.length > 0; else noSessions">
   <div *ngFor="let session of sessions" class="mb-6 mt-6">
-    <!-- <app-session-card [session]="session" (click)="onSessionSelected(session.session_id)"></app-session-card> -->
-    <app-session-card [session]="session" ></app-session-card>
+      <app-session-card [session]="session" ></app-session-card>
   </div>
 </div>
 </div>

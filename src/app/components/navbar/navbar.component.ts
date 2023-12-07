@@ -28,16 +28,20 @@ export class NavbarComponent implements OnInit {
 
   ngOnInit(): void {
     this.userService.initializeUserState();
-    this.categoryService.getCategory().subscribe((categories) => {
-      this.categories = categories;
-      this.changeDetectorRef.detectChanges();
-    });
+   
     this.userService.userLoggedIn$.subscribe((loggedIn) => {
-      console.log('isLoggedIn updated to: ', loggedIn);
       this.isLoggedIn = loggedIn;
-      this.changeDetectorRef.detectChanges();
+      if (loggedIn) {
+        this.userService.getCurrentUser().subscribe((userData: User) => {
+          this.user = userData;
+          this.changeDetectorRef.detectChanges(); // Force la mise à jour de l'interface utilisateur
+        });
+      }
     });
-
+ this.categoryService.getCategory().subscribe((categories) => {
+   this.categories = categories;
+   this.changeDetectorRef.detectChanges();
+ });
     this.userService.userRole$.subscribe((role) => {
       this.userRole = role;
       this.changeDetectorRef.detectChanges();

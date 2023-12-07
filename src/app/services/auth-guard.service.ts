@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
 })
 export class AuthGuardService {
   private readonly apiUrl = 'http://localhost:3000/api/auth/checktoken'; // URL api
-  //detection role du user
+ 
 
   constructor(
     private http: HttpClient,
@@ -29,15 +29,11 @@ export class AuthGuardService {
     return this.http.post(`${this.apiUrl}`, {}, { headers }).pipe(
       map((response) => {
         // On retourne la réponse du serveur
-        console.log(
-          'je suis dans guard service et la reponse du serveur',
-          response
-        );
+        
         return response;
       }),
       catchError((error) => {
-        // Si le token n'est pas valide
-        console.error('Erreur lors de la validation du token:', error);
+        
         return throwError(
           'Une erreur est survenue lors de la validation du token.'
         );

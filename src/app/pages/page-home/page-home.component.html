@@ -1,6 +1,6 @@
 <body>
-  <div class="wrapper">
-    <div class="box-container">
+  <header class="wrapper">
+    <div class="box-container" role="accueil de l'application RAILZEN">
       <div class="box">
         <div></div>
         <div></div>
@@ -14,22 +14,27 @@
         <div></div>
       </div>
     </div>
+    <main class="parent-container">
+    <div class="svg-container">
+      <object [data]="currentImage" type="image/svg+xml"aria-label="Cheminots en méditation"></object>
+    </div>
     <div class="content">
       <h1>Bienvenue sur RailZen</h1>
-      <p>"Bienvenue dans le monde apaisant de RailZen. Nous vous offrons un refuge de calme où vous pouvez vous ressourcer. Plongez dans notre univers de méditation pour une expérience de paix intérieure."</p>
+      <p>
+        "Bienvenue dans le monde apaisant de RailZen. Nous vous offrons un
+        refuge de calme où vous pouvez vous ressourcer. Plongez dans notre
+        univers de méditation pour une expérience de paix intérieure."
+      </p>
       <div class="button-container">
-        <button class="btn btn-primary" [routerLink]="['/connect']">CONNEXION</button>
-        <button class="btn btn-secondary" [routerLink]="['/subscribe']">INSCRIPTION</button>
+        <button class="btn btn-primary" [routerLink]="['/connect'] "aria-label="Connexion à RailZen">
+          CONNEXION
+        </button>
+        <button class="btn btn-secondary" [routerLink]="['/subscribe']" aria-label="Inscription à RailZen">
+          INSCRIPTION
+        </button>
       </div>
     </div>
-      <div class="svg-container">
-  <div id="currentImage" class="svg-figure opacity-transition">
-    <object [data]="currentImage" type="image/svg+xml"></object>
-  </div>
-  <div id="nextImage" class="svg-figure opacity-transition hidden">
-    <object [data]="nextImage" type="image/svg+xml"></object>
-  </div>
-</div>
-
-  </div>
+  </main>
+    
+  </header>
 </body>

@@ -1,9 +1,9 @@
-<article (click)="onCategorySelected(category.category_id)" class="postcard" [ngClass]="isAlternate ? 'light red' : 'light blue'">
-  <a class="postcard__img_link" [ngClass]="{'reverse': isAlternate}">
+<article (click)="onCategorySelected(category.category_id)" class="postcard" [ngClass]="isAlternate ? 'light red' : 'light blue'" tabindex="0">
+  <a class="postcard__img_link" [ngClass]="{'reverse': isAlternate}" aria-labelledby="titreDeLaCategorie">
     <img class="postcard__img" [src]="category.imageUrl" alt="{{ category.name }}" />
   </a>
   <div class="postcard__text t-dark">
-    <h1 class="postcard__title" [ngClass]="isAlternate ? 'red' : 'blue'"><a href="#">{{ category.name }}</a></h1>
+    <h1 id="titreDeLaCategorie"class="postcard__title" [ngClass]="isAlternate ? 'red' : 'blue'"><a href="#"[routerLink]="['/sessions', category.category_id]" aria-hidden="true">{{ category.name }}</a></h1>
     <div class="postcard__bar"></div>
     <div class="postcard__preview-txt">{{ category.description }}</div>
 

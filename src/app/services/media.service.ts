@@ -11,37 +11,37 @@ export class MediaService {
   private bddUrl = 'http://localhost:3000/api/medias';
   constructor(private http: HttpClient) {}
 
-  // private getHeaders(): HttpHeaders {
-  //   const token = localStorage.getItem('access_token');
-  //   let headers = new HttpHeaders();
-  //   if (token) {
-  //     headers = headers.set('Authorization', 'Bearer ' + token);
-  //   }
-  //   return headers;
-  // }
+  private getHttpOptions() {
+    const token = localStorage.getItem('token');
+    return {
+      headers: new HttpHeaders({
+        Authorization: `Bearer ${token}`,
+      }),
+    };
+  }
 
   getMedia() {
     return this.http.get(`${this.bddUrl}`, {
+      ...this.getHttpOptions(),
       responseType: 'blob',
     });
   }
 
   getMediaById(id: number) {
-    return this.http.get(`http://localhost:3000/api/medias/${id}`).pipe(
-      tap((data) => console.log('Réponse du média:', data)),
-      catchError((err) => {
-        console.error('Erreur lors de la récupération du média:', err);
-        throw err;
-      })
-    );
+    return this.http
+      .get(`http://localhost:3000/api/medias/${id}`, this.getHttpOptions())
+      .pipe(
+        tap((data) => console.log('Réponse du média:', data)),
+        catchError((err) => {
+          console.error('Erreur lors de la récupération du média:', err);
+          throw err;
+        })
+      );
   }
 
   postMedia(formData: FormData) {
-    const token = localStorage.getItem('token');
     return this.http
-      .post('http://localhost:3000/api/medias', formData, {
-        headers: { Authorization: `Bearer ${token}` },
-      })
+      .post('http://localhost:3000/api/medias', formData, this.getHttpOptions())
       .pipe(
         tap((response: any) => {
           console.log('Réponse du serveur après création du média:', response);
@@ -50,6 +50,9 @@ export class MediaService {
   }
 
   deleteMedia(id: number) {
-    return this.http.delete(`http://localhost:3000/api/medias/${id}`);
+    return this.http.delete(
+      `http://localhost:3000/api/medias/${id}`,
+      this.getHttpOptions()
+    );
   }
 }

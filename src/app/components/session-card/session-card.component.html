@@ -5,16 +5,16 @@
     <div class="flex flex-col md:flex-row">
     <div class="md:w-1/2 ">
    <div class="image-container">
-          <img class="image-zoom w-full rounded md:block" [src]="randomImage" alt="Diaporama">
+          <img class="image-zoom w-full rounded md:block" [src]="randomImage" alt="image zen générée aléatoirement">
         </div>
 </div>
       <div class="w-full p-8">
         <div class="flex justify-between">
           <div>
             <h3 class="text-2xl text-grey-darkest font-bold">{{ session.title }}</h3>
-            <h2 class="text-1xl text-grey-darkest font-bold mt-1">{{ session.category?.name }}</h2>
+            <a [routerLink]="['/sessions', session.category?.category_id]" aria-label="Voir les sessions de la catégorie" class="text-1xl text-grey-darkest font-bold mt-1" >{{ session.category?.name }}</a>
             <p class="text-sm text-grey mt-1">{{ session.description }}</p>
-            <button (click)="toggleFavorite()" class="btn" [ngClass]="{'btn-primary': !isFavorite, 'btn-secondary': isFavorite}">
+            <button (click)="toggleFavorite()" class="btn" aria-label="Ajouter ou enlever des favoris" [ngClass]="{'btn-primary': !isFavorite, 'btn-secondary': isFavorite}">
   {{ isFavorite ? 'Enlever des Favoris' : 'Ajouter aux Favoris' }}
 </button>
 
@@ -27,10 +27,9 @@
      <div class="audio-container mt-1">
  
 <audio *ngIf="meditAudio" controls>
-  <source [src]="meditAudio" type="audio/mpeg">
+  <source [src]="meditAudio" type="audio/mpeg" aria-label="Méditation audio">
   Votre navigateur ne supporte pas l'élément audio.
 </audio>
-
 </div>
     </div>
   </div>

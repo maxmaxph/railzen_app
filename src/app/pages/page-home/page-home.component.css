@@ -4,22 +4,30 @@ body {
   padding: 0;
   color: #fff;
 }
-
+img{
+  width: 230px;
+}
 /* Style de l'arrière-plan avec dégradé linéaire */
 .wrapper {
   position: absolute;
   width: 100%;
   height: 100%;
   overflow: hidden;
-  background: #24C6DC;
-  background: -webkit-linear-gradient(to bottom, #514A9D, #24C6DC);
-  background: linear-gradient(to bottom, #514A9D, #24C6DC);
+  background: #24c6dc;
+  background: linear-gradient(to bottom, #514a9d, #24c6dc);
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
-
+.parent-container {
+  display: flex;
+  align-items: center; /* Centrage vertical */
+  justify-content: center; /* Centrage horizontal */
+  flex-direction: column; /* Éléments empilés verticalement */
+  height: 100%; /* Hauteur nécessaire pour le centrage vertical */
+ 
+}
 /* Styles des boîtes animées */
 .box-container {
   display: flex;
@@ -99,10 +107,8 @@ body {
 
 /* Styles pour le contenu au-dessus de l'animation */
 .content {
-  padding-top: 30%;
   text-align: center;
-  z-index: 3; /* Assure que le contenu soit au-dessus des boîtes animées */
-  
+  z-index: 2; /* Assure que le contenu soit au-dessus des boîtes animées */
 }
 
 .content h1 {
@@ -135,13 +141,13 @@ body {
   margin: 5px;
   font-size: 14px;
 }
-.btn-secondary{
-background: #a89f91;
-border: none;
+.btn-secondary {
+  background: #a89f91;
+  border: none;
 }
-.btn-primary{
-background: #1e1c3a;
-border: none;
+.btn-primary {
+  background: #1e1c3a;
+  border: none;
 }
 
 .btn:hover {
@@ -164,87 +170,106 @@ border: none;
 
 /* Styles pour le diaporama des figurines SVG */
 .svg-container {
-  position: absolute;
-  top: 0; /* Position au-dessus du contenu */
+  position: relative;
+  z-index: 1; /* Modifier le z-index en 1 pour le placer derrière le contenu */
+  top: 0;
+  margin-top: 10px;
   left: 0;
   width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
-  opacity: 1; /* Masquez initialement les figurines */
-  margin-top: 10px; /* Espace entre la figurine et le contenu */
-  padding-top:9%;
-  z-index: 2;
+  opacity: 1;
 }
+.svg-container object {
+  width: 230px; /* ou la taille désirée */
+  height: auto; /* pour conserver l'aspect ratio */
+    animation: float 8s linear infinite; /* Vous pouvez ajuster la durée de l'animation ici */
+  transition: opacity 2s ease; /* Ajoutez cette ligne pour la transition de l'opacité */
+  width: 230px; /* ou toute autre valeur fixe ou relative */
+  margin-bottom: 10px;
+}
+
 
 .svg-figure {
   
-  animation: float 8s linear infinite; /* Vous pouvez ajuster la durée de l'animation ici */
-  transition: opacity 2s ease; /* Ajoutez cette ligne pour la transition de l'opacité */
-  width: 230px; /* ou toute autre valeur fixe ou relative */
- 
+  animation: float 20s linear infinite; /* Vous pouvez ajuster la durée de l'animation ici */
+    width: 230px; /* ou toute autre valeur fixe ou relative */
 }
 
 /* Animation du diaporama */
 
 @keyframes float {
   0%, 100% {
-    transform: translateY(0);
-   
+    transform: translate(0, -10px);
   }
-
-  25% {
-    transform: translateY(-20px);
-   
+  10% {
+    transform: translate(15px, -15px);
   }
-
+  20% {
+    transform: translate(30px, 0);
+  }
+  30% {
+    transform: translate(15px, 15px);
+  }
+  40% {
+    transform: translate(0px, 20px);
+  }
   50% {
-    transform: translateY(0);
-    
+    transform: translate(-15px, 15px);
   }
-
-  75% {
-    transform: translateY(-20px);
-    
+  60% {
+    transform: translate(-30px, 0);
+  }
+  70% {
+    transform: translate(-15px, -15px);
+  }
+  80% {
+    transform: translate(0, -20px);
+  }
+  90% {
+    transform: translate(15px, -15px);
   }
 }
 
-/* Gestion de l'opacité pour les images SVG */
 
-.opacity-transition {
-  transition: opacity 2s ease-in-out;
-}
-.visible {
-  opacity: 1;
-  transition: opacity 2s ease-in-out;
-}
 
-.hidden {
-  opacity: 0;
-  transition: opacity 2s ease-in-out;
-}
+
+
 @media (max-width: 768px) {
-  /* Styles pour les écrans de largeur maximale de 768px (Mobile) */
+  .content h1 {
+    font-size: 20px;
+    margin-bottom: 10px;
+  }
+
+  .content h2 {
+    font-size: 16px;
+    margin-bottom: 10px;
+    padding-left: 15%;
+    padding-right: 15%;
+  }
+
+  .content p {
+    font-size: 16px;
+    margin-bottom: 20px;
+    padding-left: 15%;
+    padding-right: 15%;
+  }
+  
+  .parent-container {
+  padding-top: 80px;
+ 
+}
   .svg-container {
-    top: (100px + 20px); /* Hauteur de la navbar + marge entre la navbar et les figurines */
+    top: (
+      100px + 20px
+    ); /* Hauteur de la navbar + marge entre la navbar et les figurines */
     align-items: center; /* Centrer la figurine verticalement */
     margin-top: 0; /* Aucun espace entre la figurine et le contenu */
-    padding-top: 32%;
+    width: 50%;
+  
   }
 
-  .content {
-    padding-top: 350px; /* Aucun espacement en haut du contenu */
-  }
-}
-
-.opacity-transition {
-  transition: opacity 1s ease-in-out;
-}
-
-.visible {
-  opacity: 1;
-}
-
-.hidden {
-  opacity: 0;
+  
+ 
 }

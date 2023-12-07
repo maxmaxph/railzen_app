@@ -15,6 +15,8 @@ import { userGuard } from './guards/user.guard';
 import { adminGuard } from './guards/admin.guard';
 import { PageInfosComponent } from './pages/page-infos/page-infos.component';
 import { ContactComponent } from './components/contact/contact.component';
+import { ConfidentialityComponent } from './components/confidentiality/confidentiality.component';
+import { LegalityComponent } from './components/legality/legality.component';
 
 
 const routes: Routes = [
@@ -61,6 +63,14 @@ const routes: Routes = [
   {
     path: 'infos',
     component: PageInfosComponent,
+  },
+  {
+    path: 'confidentiality',
+    component: ConfidentialityComponent,
+  },
+  {
+    path: 'legality',
+    component: LegalityComponent,
   },
   {
     path: 'contact',

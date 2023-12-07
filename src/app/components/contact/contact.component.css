@@ -19,3 +19,7 @@ body {
   justify-content: center;
   align-items: center;
 }
+
+.error-border {
+  border: 1px solid red;
+}

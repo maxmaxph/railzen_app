@@ -36,11 +36,5 @@ export class SessionListComponent implements OnInit {
       }
     );
   }
-
-  // onSessionSelected(sessionId: number): void {
-  //   // Naviguez vers la route qui affiche les sessions pour la catégorie sélectionnée
-  //   this.router.navigate(['/sessions/details', sessionId]);
-  // }
-
-  
+ 
 }

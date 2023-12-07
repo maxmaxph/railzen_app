@@ -15,7 +15,7 @@ export class PageSubmitSessionComponent implements OnInit {
   uploadForm: FormGroup;
   audioMediaId!: number;
   currentUser = +localStorage.getItem('user_id')!;
-  categories: Category[] = []
+  categories: Category[] = [];
 
   constructor(
     private fb: FormBuilder,
@@ -34,7 +34,6 @@ export class PageSubmitSessionComponent implements OnInit {
   }
   ngOnInit(): void {
     this.loadCategories();
-    
   }
 
   loadCategories() {
@@ -43,7 +42,6 @@ export class PageSubmitSessionComponent implements OnInit {
     });
   }
   onSubmit() {
-    console.log('FORMULAIRE ENVOYER', this.uploadForm.value);
     if (this.uploadForm.valid) {
       const sessionData = {
         title: this.uploadForm.get('title')?.value,
@@ -53,23 +51,17 @@ export class PageSubmitSessionComponent implements OnInit {
         user_id: this.currentUser,
         media_id: this.audioMediaId,
       };
-      console.log('user_id', this.currentUser);
-      console.log('DATA ENVOYER AU BACKEND  : ', sessionData);
       // Envoi des données à l'API
       this.sessionService.addSession(sessionData).subscribe({
         next: (response: any) => {
-          // réponse du backend ici (par exemple, une redirection ou un message de succès)
-          console.log('Réponse du backend :', response);
-          console.log('this.currentUser:', this.currentUser);
-          console.log('this.audioMediaId:', this.audioMediaId);
           this.router.navigate(['/admin']);
         },
         error: (error: any) => {
-          console.error('Erreur lors de l’ajout de la méditation:', error);
+          alert('Erreur lors de l’ajout de la méditation: ' + error);
         },
       });
     } else {
-      console.error(
+      alert(
         'Formulaire invalide. Assurez-vous de remplir tous les champs requis et d’uploader les médias.'
       );
     }

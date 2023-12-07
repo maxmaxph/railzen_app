@@ -24,7 +24,10 @@ body {
     z-index: 4;
     margin-top: 110px;
 }
-
+h1 {
+  font-size: 26px;
+  margin-bottom: 10px;
+}
 .content h1 {
   font-size: 26px;
   margin-bottom: 10px;

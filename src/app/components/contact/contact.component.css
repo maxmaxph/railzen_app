@@ -23,3 +23,8 @@ body {
 .error-border {
   border: 1px solid red;
 }
+
+.checkbox {
+  margin-top: 10px;
+  transform: scale(1.5); /* Augmente la taille de 50% */
+}

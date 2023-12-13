@@ -10,7 +10,7 @@
     </p>
     <form (submit)="sendEmail($event)" class="space-y-4">
       <div>
-        <label for="email" class="block mb-2 text-sm font-bold text-gray-100"
+        <label for="email" class="block mb-2 text-base font-bold text-gray-100"
           >Votre adresse mail</label
         >
         <input
@@ -19,7 +19,7 @@
           [(ngModel)]="email"
           name="email"
           (ngModelChange)="validateEmail()"
-          class="shadow-sm bg-gray-50 border text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2"
+          class="shadow-sm bg-gray-50 border text-gray-900 text-base rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2"
           placeholder="prénom.nom@sncf.com"
         />
         <p *ngIf="emailInvalid" class="text-xs text-red-900">
@@ -27,7 +27,7 @@
         </p>
       </div>
       <div>
-        <label for="subject" class="block mb-2 text-sm font-bold text-gray-100"
+        <label for="subject" class="block mb-2 text-base font-bold text-gray-100"
           >Sujet</label
         >
         <input
@@ -36,13 +36,13 @@
           [(ngModel)]="subject"
           name="subject"
           [class.error-border]="subjectRequired"
-          class="block p-2 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 shadow-sm focus:ring-primary-500 focus:border-primary-500"
+          class="block p-2 w-full text-base text-gray-900 bg-gray-50 rounded-lg border border-gray-300 shadow-sm focus:ring-primary-500 focus:border-primary-500"
           placeholder="Quel sujet souhaitez vous aborder"
           required
         />
       </div>
       <div class="sm:col-span-2">
-        <label for="message" class="block mb-2 text-sm font-bold text-gray-100"
+        <label for="message" class="block mb-2 text-base font-bold text-gray-100"
           >Votre message</label
         >
         <textarea
@@ -51,29 +51,30 @@
           [(ngModel)]="message"
           name="message"
           [class.error-border]="messageRequired"
-          class="block p-2 w-full text-sm text-gray-900 bg-gray-50 rounded-lg shadow-sm border border-gray-300 focus:ring-primary-500 focus:border-primary-500"
+          class="block p-2 w-full text-base text-gray-900 bg-gray-50 rounded-lg shadow-sm border border-gray-300 focus:ring-primary-500 focus:border-primary-500"
           placeholder="Tapez votre message ici..."
           required
         ></textarea>
       </div>
       <div>
-        <label class="block mb-2 text-sm font-bold text-gray-100">
+        <label class="block mb-2 text-base font-bold text-gray-100">
           Etes vous un humain? Résolvez ce calcul: {{ num1 }} + {{ num2 }}
         </label>
         <input
           type="number"
           [(ngModel)]="userAnswer"
           name="userAnswer"
-          class="block p-2 w-full text-sm text-gray-900 bg-gray-50 rounded-lg shadow-sm"
+          class="block p-2 w-full text-base text-gray-900 bg-gray-50 rounded-lg shadow-sm"
           placeholder="Votre réponse"
         />
         <input
           type="checkbox"
+          class="checkbox"
           (change)="checkAnswer()"
           id="answerCheck"
           name="answerCheck"
         />
-        <label for="answerCheck" class="ml-2 text-sm font-bold text-gray-100"
+        <label for="answerCheck" class="ml-2 text-base font-bold text-gray-100"
           >Cochez pour valider la réponse et afficher le boutton d'envoi</label
         >
       </div>

@@ -36,7 +36,7 @@
           required
           autocomplete="email"
         />
-      </div>
+              </div>
       <div class="mb-1">
         <label for="inputPassword" class="form-label">Mot de passe</label>
         <input
@@ -44,7 +44,7 @@
           class="form-control"
           id="inputPassword"
           formControlName="inputPassword"
-          autocomplete="current-password"
+          autocomplete="new-password"
         />
       </div>
       <div class="mb-1">
@@ -56,9 +56,17 @@
           class="form-control"
           id="inputConfirmPassword"
           formControlName="inputConfirmPassword"
-          autocomplete="current-password"
+          autocomplete="new-password"
         />
       </div>
+      <div *ngIf="subscribeForm.get('inputPassword')?.errors?.['weakPassword']" class="alert alert-danger">
+  Votre mot de passe doit contenir au moins <br> 8 caractères, dont une majuscule,<br> une minuscule, un chiffre <br>et un caractère spécial.
+</div>
+
+      <div *ngIf="subscribeForm.errors?.['passwordMismatch']" class="alert alert-danger">
+  Les mots de passe ne correspondent pas.
+      </div>
+        
 
       <button type="submit" class="btn btn-primary">S'ENREGISTRER</button>
     </form>

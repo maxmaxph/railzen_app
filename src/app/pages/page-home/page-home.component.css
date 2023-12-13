@@ -114,6 +114,7 @@ img{
 .content h1 {
   font-size: 26px;
   margin-bottom: 10px;
+  margin-top: 10px;
 }
 
 .content h2 {
@@ -124,10 +125,10 @@ img{
 }
 
 .content p {
-  font-size: 16px;
+  font-size: 18px;
   margin-bottom: 20px;
-  padding-left: 15%;
-  padding-right: 15%;
+  padding-left: 30%;
+  padding-right: 30%;
 }
 
 /* Styles pour les boutons */
@@ -142,7 +143,7 @@ img{
   font-size: 14px;
 }
 .btn-secondary {
-  background: #a89f91;
+  background: #1e1c3a;
   border: none;
 }
 .btn-primary {
@@ -238,7 +239,8 @@ img{
 
 @media (max-width: 768px) {
   .content h1 {
-    font-size: 20px;
+    font-size: 24px;
+    font-weight: 500;
     margin-bottom: 10px;
   }
 
@@ -250,7 +252,7 @@ img{
   }
 
   .content p {
-    font-size: 16px;
+    font-size: 18px;
     margin-bottom: 20px;
     padding-left: 15%;
     padding-right: 15%;
@@ -262,7 +264,7 @@ img{
 }
   .svg-container {
     top: (
-      100px + 20px
+      80px 
     ); /* Hauteur de la navbar + marge entre la navbar et les figurines */
     align-items: center; /* Centrer la figurine verticalement */
     margin-top: 0; /* Aucun espace entre la figurine et le contenu */

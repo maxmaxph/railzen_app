@@ -1,21 +1,21 @@
-<footer class="fixed bottom-0 left-0 z-20 w-full bg-white border-t border-gray-200 shadow">
+<footer class="opacity-90 fixed bottom-0 left-0 z-20 w-full bg-white border-t border-gray-200 shadow">
   <div class="flex flex-col items-center justify-center p-2 md:flex-row md:items-center md:justify-between md:p-6">
     <div class="text-sm text-gray-500">
       © 2023 <a [routerLink]="['/infos']" aria-label="À propos de RAILZEN">RAILZEN</a>. Tous droits réservés.
     </div>
-    <ul class="flex flex-wrap justify-center mt-3 text-sm font-medium text-gray-500 sm:mt-0" role="navigation" aria-label="Liens utiles">
+    <nav class="flex flex-wrap justify-center mt-3 text-sm font-medium text-gray-500 sm:mt-0" role="navigation" aria-label="Liens utiles">
       <li>
         <a [routerLink]="['/infos']" class="hover:underline me-4 md:me-6" aria-label="À propos">À propos</a>
       </li>
       <li>
-        <a [routerLink]="['/legality']" class="hover:underline me-4 md:me-6" aria-label="Informations légales">Infos légales</a>
+        <a [routerLink]="['/legality']" class="hover:underline me-4 md:me-6" aria-label="Infos légales">Infos légales</a>
       </li>
       <li>
-        <a [routerLink]="['/confidentiality']" class="hover:underline me-4 md:me-6" aria-label="Politique de confidentialité">Confidentialité</a>
+        <a [routerLink]="['/confidentiality']" class="hover:underline me-4 md:me-6" aria-label="confidentialité">Confidentialité</a>
       </li>
       <li>
         <a [routerLink]="['/contact']" class="hover:underline" aria-label="Contact">Contact</a>
       </li>
-    </ul>
+    </nav>
   </div>
 </footer>
